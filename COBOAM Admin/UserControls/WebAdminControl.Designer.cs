@@ -1,4 +1,5 @@
 ﻿using System;
+using COBOAM_Admin.UserControls.WebAdmin;
 
 namespace COBOAM_Admin.UserControls
 {
@@ -31,12 +32,10 @@ namespace COBOAM_Admin.UserControls
         private void InitializeComponent()
         {
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.tpLogs = new System.Windows.Forms.TabPage();
-            this.rtbLogs = new System.Windows.Forms.RichTextBox();
-            this.panelTop = new System.Windows.Forms.Panel();
-            this.lblCategory = new System.Windows.Forms.Label();
-            this.cbTypes = new System.Windows.Forms.ComboBox();
+            this.tpActivity = new System.Windows.Forms.TabPage();
+            this.Activity = new COBOAM_Admin.UserControls.WebAdmin.Activity();
             this.tpAnnouncements = new System.Windows.Forms.TabPage();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.nudYear = new System.Windows.Forms.NumericUpDown();
             this.cbMonth = new System.Windows.Forms.ComboBox();
@@ -49,10 +48,8 @@ namespace COBOAM_Admin.UserControls
             this.lblDate = new System.Windows.Forms.Label();
             this.panelSide = new System.Windows.Forms.Panel();
             this.lbPrevDev = new System.Windows.Forms.ListBox();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
-            this.tpLogs.SuspendLayout();
-            this.panelTop.SuspendLayout();
+            this.tpActivity.SuspendLayout();
             this.tpAnnouncements.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).BeginInit();
             this.panelSide.SuspendLayout();
@@ -61,7 +58,7 @@ namespace COBOAM_Admin.UserControls
             // tabControl
             // 
             this.tabControl.Alignment = System.Windows.Forms.TabAlignment.Bottom;
-            this.tabControl.Controls.Add(this.tpLogs);
+            this.tabControl.Controls.Add(this.tpActivity);
             this.tabControl.Controls.Add(this.tpAnnouncements);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
@@ -71,64 +68,24 @@ namespace COBOAM_Admin.UserControls
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
-            // tpLogs
+            // tpActivity
             // 
-            this.tpLogs.BackColor = System.Drawing.SystemColors.Control;
-            this.tpLogs.Controls.Add(this.rtbLogs);
-            this.tpLogs.Controls.Add(this.panelTop);
-            this.tpLogs.Location = new System.Drawing.Point(4, 4);
-            this.tpLogs.Name = "tpLogs";
-            this.tpLogs.Padding = new System.Windows.Forms.Padding(3);
-            this.tpLogs.Size = new System.Drawing.Size(1042, 650);
-            this.tpLogs.TabIndex = 0;
-            this.tpLogs.Text = "Logs";
+            this.tpActivity.BackColor = System.Drawing.SystemColors.Control;
+            this.tpActivity.Controls.Add(this.Activity);
+            this.tpActivity.Location = new System.Drawing.Point(4, 4);
+            this.tpActivity.Name = "tpActivity";
+            this.tpActivity.Padding = new System.Windows.Forms.Padding(3);
+            this.tpActivity.Size = new System.Drawing.Size(1042, 650);
+            this.tpActivity.TabIndex = 0;
+            this.tpActivity.Text = "Activity";
             // 
-            // rtbLogs
+            // Activity
             // 
-            this.rtbLogs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbLogs.Location = new System.Drawing.Point(3, 38);
-            this.rtbLogs.Name = "rtbLogs";
-            this.rtbLogs.ReadOnly = true;
-            this.rtbLogs.Size = new System.Drawing.Size(1036, 609);
-            this.rtbLogs.TabIndex = 0;
-            this.rtbLogs.Text = "";
-            // 
-            // panelTop
-            // 
-            this.panelTop.Controls.Add(this.lblCategory);
-            this.panelTop.Controls.Add(this.cbTypes);
-            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTop.Location = new System.Drawing.Point(3, 3);
-            this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1036, 35);
-            this.panelTop.TabIndex = 2;
-            // 
-            // lblCategory
-            // 
-            this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(6, 11);
-            this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(52, 13);
-            this.lblCategory.TabIndex = 2;
-            this.lblCategory.Text = "Category:";
-            // 
-            // cbTypes
-            // 
-            this.cbTypes.FormattingEnabled = true;
-            this.cbTypes.Items.AddRange(new object[] {
-            "All",
-            "Announcement",
-            "Devotion",
-            "Greetings",
-            "Security",
-            "Sermons",
-            "Testimony",
-            "Users"});
-            this.cbTypes.Location = new System.Drawing.Point(64, 8);
-            this.cbTypes.Name = "cbTypes";
-            this.cbTypes.Size = new System.Drawing.Size(155, 21);
-            this.cbTypes.TabIndex = 1;
-            this.cbTypes.SelectedIndexChanged += new System.EventHandler(this.cbTypes_SelectedIndexChanged);
+            this.Activity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Activity.Location = new System.Drawing.Point(3, 3);
+            this.Activity.Name = "Activity";
+            this.Activity.Size = new System.Drawing.Size(1036, 644);
+            this.Activity.TabIndex = 0;
             // 
             // tpAnnouncements
             // 
@@ -151,6 +108,16 @@ namespace COBOAM_Admin.UserControls
             this.tpAnnouncements.Size = new System.Drawing.Size(1042, 650);
             this.tpAnnouncements.TabIndex = 1;
             this.tpAnnouncements.Text = "Announcements";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(292, 461);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
@@ -264,16 +231,6 @@ namespace COBOAM_Admin.UserControls
             this.lbPrevDev.TabIndex = 0;
             this.lbPrevDev.SelectedIndexChanged += new System.EventHandler(this.lbPrevDev_SelectedIndexChanged);
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(292, 461);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 5;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // WebAdminControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -283,9 +240,7 @@ namespace COBOAM_Admin.UserControls
             this.Size = new System.Drawing.Size(1050, 676);
             this.Load += new System.EventHandler(this.WebAdminControl_Load);
             this.tabControl.ResumeLayout(false);
-            this.tpLogs.ResumeLayout(false);
-            this.panelTop.ResumeLayout(false);
-            this.panelTop.PerformLayout();
+            this.tpActivity.ResumeLayout(false);
             this.tpAnnouncements.ResumeLayout(false);
             this.tpAnnouncements.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).EndInit();
@@ -297,12 +252,8 @@ namespace COBOAM_Admin.UserControls
         #endregion
 
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tpLogs;
+        private System.Windows.Forms.TabPage tpActivity;
         private System.Windows.Forms.TabPage tpAnnouncements;
-        private System.Windows.Forms.RichTextBox rtbLogs;
-        private System.Windows.Forms.Panel panelTop;
-        private System.Windows.Forms.ComboBox cbTypes;
-        private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.Panel panelSide;
         private System.Windows.Forms.ListBox lbPrevDev;
         private System.Windows.Forms.Label lblScripture;
@@ -316,5 +267,6 @@ namespace COBOAM_Admin.UserControls
         private System.Windows.Forms.ComboBox cbMonth;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnDelete;
+        private Activity Activity;
     }
 }
