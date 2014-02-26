@@ -19,7 +19,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             InitializeComponent();
         }
 
-        public void LoadLogs()
+        public void Load()
         {
             cbTypes.SelectedIndex = (int)Logs.All;
         }
