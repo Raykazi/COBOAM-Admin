@@ -65,6 +65,18 @@
     <Compile Include="UserControls\WebAdminControl.Designer.cs">
       <DependentUpon>WebAdminControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\WebAdmin\Activity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WebAdmin\Activity.Designer.cs">
+      <DependentUpon>Activity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WebAdmin\Devotion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WebAdmin\Devotion.Designer.cs">
+      <DependentUpon>Devotion.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UserControls\MediaSalesControl.resx">
       <DependentUpon>MediaSalesControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -74,10 +86,13 @@
     <EmbeddedResource Include="UserControls\WebAdminControl.resx">
       <DependentUpon>WebAdminControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WebAdmin\Activity.resx">
+      <DependentUpon>Activity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WebAdmin\Devotion.resx">
+      <DependentUpon>Devotion.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Resources\New COBOAM.gif" />
-    <None Include="Config.Ini">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,9 +148,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UserControls\WebAdmin\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

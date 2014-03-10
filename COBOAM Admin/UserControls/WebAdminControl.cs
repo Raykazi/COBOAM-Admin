@@ -23,12 +23,12 @@ namespace COBOAM_Admin.UserControls
 
         private void LoadLogs()
         {
-            Activity.LoadLogs();
+            Activity.Load();
         }
 
         private void LoadDevotions()
         {
-            Devotion.LoadDevotions();
+            Devotion.Load();
         }
 
 
