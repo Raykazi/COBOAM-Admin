@@ -44,15 +44,5 @@ namespace COBOAM_Admin.UserControls
                     break;
             }
         }
-
-        private void lbPrevDev_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
