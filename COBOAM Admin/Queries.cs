@@ -22,6 +22,8 @@
                     return "INSERT INTO `devotion` (`Month`,`Year`,`Quote`,`Scripture`,`Text`) VALUES('{0}','{1}','{2}','{3}','{4}');";
                 case QueryIndex.Devotion3:
                     return "UPDATE `devotion` SET `Quote`='{1}', `Scripture`='{2}', `Text`='{3}', `Month`='{4}', `Year`='{5}' WHERE `ID` = '{0}'";
+                    case QueryIndex.Devotion4:
+                    return "DELETE FROM `devotion` WHERE `Month`='{0}' AND `Year`='{1}'";
             }
             return "";
         }
@@ -36,6 +38,7 @@
         Logs3,
         Devotion1,
         Devotion2,
-        Devotion3
+        Devotion3,
+        Devotion4
     }
 }
