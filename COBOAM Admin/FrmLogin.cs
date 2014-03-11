@@ -65,7 +65,7 @@ namespace COBOAM_Admin
             Program.uLIP = userInfo[9][0];
             using (WebClient wc = new WebClient())
             {
-                ipAddress = wc.DownloadString("http://api.externalip.net/ip");
+                ipAddress = wc.DownloadString("http://channelofblessings.com/includes/IP.php");
             }
             if (string.IsNullOrEmpty(ipAddress)) return loginResult;
             Program.uCIP = ipAddress;
