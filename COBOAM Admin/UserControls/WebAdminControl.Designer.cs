@@ -36,9 +36,12 @@ namespace COBOAM_Admin.UserControls
             this.Activity = new COBOAM_Admin.UserControls.WebAdmin.Activity();
             this.tpDevotion = new System.Windows.Forms.TabPage();
             this.Devotion = new COBOAM_Admin.UserControls.WebAdmin.Devotion();
+            this.tpGreetings = new System.Windows.Forms.TabPage();
+            this.Greetings = new COBOAM_Admin.UserControls.WebAdmin.Greetings();
             this.tabControl.SuspendLayout();
             this.tpActivity.SuspendLayout();
             this.tpDevotion.SuspendLayout();
+            this.tpGreetings.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -46,6 +49,7 @@ namespace COBOAM_Admin.UserControls
             this.tabControl.Alignment = System.Windows.Forms.TabAlignment.Bottom;
             this.tabControl.Controls.Add(this.tpActivity);
             this.tabControl.Controls.Add(this.tpDevotion);
+            this.tabControl.Controls.Add(this.tpGreetings);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
@@ -92,6 +96,25 @@ namespace COBOAM_Admin.UserControls
             this.Devotion.Size = new System.Drawing.Size(1036, 644);
             this.Devotion.TabIndex = 0;
             // 
+            // tpGreetings
+            // 
+            this.tpGreetings.Controls.Add(this.Greetings);
+            this.tpGreetings.Location = new System.Drawing.Point(4, 4);
+            this.tpGreetings.Name = "tpGreetings";
+            this.tpGreetings.Padding = new System.Windows.Forms.Padding(3);
+            this.tpGreetings.Size = new System.Drawing.Size(1042, 650);
+            this.tpGreetings.TabIndex = 2;
+            this.tpGreetings.Text = "Greetings";
+            this.tpGreetings.UseVisualStyleBackColor = true;
+            // 
+            // Greetings
+            // 
+            this.Greetings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Greetings.Location = new System.Drawing.Point(3, 3);
+            this.Greetings.Name = "Greetings";
+            this.Greetings.Size = new System.Drawing.Size(1036, 644);
+            this.Greetings.TabIndex = 0;
+            // 
             // WebAdminControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -103,6 +126,7 @@ namespace COBOAM_Admin.UserControls
             this.tabControl.ResumeLayout(false);
             this.tpActivity.ResumeLayout(false);
             this.tpDevotion.ResumeLayout(false);
+            this.tpGreetings.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -114,5 +138,7 @@ namespace COBOAM_Admin.UserControls
         private System.Windows.Forms.TabPage tpDevotion;
         private Activity Activity;
         private Devotion Devotion;
+        private System.Windows.Forms.TabPage tpGreetings;
+        private Greetings Greetings;
     }
 }

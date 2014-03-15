@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 using System.Windows.Forms;
+using COBOAM_Admin.UserControls.WebAdmin;
 
 namespace COBOAM_Admin.UserControls
 {
@@ -12,13 +13,11 @@ namespace COBOAM_Admin.UserControls
             InitializeComponent();
         }
 
-
-
         private void WebAdminControl_Load(object sender, EventArgs e)
         {
             LoadLogs();
             LoadDevotions();
-
+            LoadGreetings();
         }
 
         private void LoadLogs()
@@ -29,6 +28,11 @@ namespace COBOAM_Admin.UserControls
         private void LoadDevotions()
         {
             Devotion.Load();
+        }
+
+        private void LoadGreetings()
+        {
+            Greetings.Load();
         }
 
 
@@ -42,7 +46,11 @@ namespace COBOAM_Admin.UserControls
                 case 1:
                     LoadDevotions();
                     break;
+                case 2:
+                    LoadGreetings();
+                    break;
             }
         }
+
     }
 }
