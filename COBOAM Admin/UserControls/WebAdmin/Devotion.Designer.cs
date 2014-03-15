@@ -40,7 +40,7 @@
             this.lblQuote = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.panelSide = new System.Windows.Forms.Panel();
-            this.lbPrevDev = new System.Windows.Forms.ListBox();
+            this.lbDevotions = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).BeginInit();
             this.panelSide.SuspendLayout();
             this.SuspendLayout();
@@ -150,22 +150,22 @@
             // 
             // panelSide
             // 
-            this.panelSide.Controls.Add(this.lbPrevDev);
+            this.panelSide.Controls.Add(this.lbDevotions);
             this.panelSide.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSide.Location = new System.Drawing.Point(0, 0);
             this.panelSide.Name = "panelSide";
             this.panelSide.Size = new System.Drawing.Size(126, 502);
             this.panelSide.TabIndex = 6;
             // 
-            // lbPrevDev
+            // lbDevotions
             // 
-            this.lbPrevDev.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbPrevDev.FormattingEnabled = true;
-            this.lbPrevDev.Location = new System.Drawing.Point(0, 0);
-            this.lbPrevDev.Name = "lbPrevDev";
-            this.lbPrevDev.Size = new System.Drawing.Size(126, 502);
-            this.lbPrevDev.TabIndex = 0;
-            this.lbPrevDev.SelectedIndexChanged += new System.EventHandler(this.lbPrevDev_SelectedIndexChanged);
+            this.lbDevotions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbDevotions.FormattingEnabled = true;
+            this.lbDevotions.Location = new System.Drawing.Point(0, 0);
+            this.lbDevotions.Name = "lbDevotions";
+            this.lbDevotions.Size = new System.Drawing.Size(126, 502);
+            this.lbDevotions.TabIndex = 0;
+            this.lbDevotions.SelectedIndexChanged += new System.EventHandler(this.lbPrevDev_SelectedIndexChanged);
             // 
             // Devotion
             // 
@@ -206,7 +206,7 @@
         private System.Windows.Forms.Label lblQuote;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Panel panelSide;
-        private System.Windows.Forms.ListBox lbPrevDev;
+        private System.Windows.Forms.ListBox lbDevotions;
 
     }
 }

@@ -29,16 +29,16 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             _tuple = Program.MySql.ExecuteReader(Queries.ToString(QueryIndex.Devotion1));
             _devotionData = _tuple.Item1;
             int rowCount = _tuple.Item2;
-            if (lbPrevDev.Items.Count > 0)
+            if (lbDevotions.Items.Count > 0)
             {
-                lbPrevDev.Items.Clear();
+                lbDevotions.Items.Clear();
             }
-            lbPrevDev.Items.Add("Create new...");
+            lbDevotions.Items.Add("Create new...");
             for (int i = 0; i < rowCount; i++)
             {
                 if (_devotionData[1][i].Length == 1)
                     _devotionData[1][i] = _devotionData[1][i].Insert(0, "0");
-                lbPrevDev.Items.Add(String.Format("{0}/{1}", _devotionData[1][i], _devotionData[2][i]));
+                lbDevotions.Items.Add(String.Format("{0}/{1}", _devotionData[1][i], _devotionData[2][i]));
             }
         }
 
@@ -59,7 +59,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
                 MessageBox.Show("Please enter text.", "Error");
                 return;
             }
-            int index = lbPrevDev.SelectedIndex;
+            int index = lbDevotions.SelectedIndex;
             int result = -1;
             string query;
             int month = cbMonth.SelectedIndex + 1;
@@ -98,7 +98,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         private void lbPrevDev_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = lbPrevDev.SelectedIndex;
+            int index = lbDevotions.SelectedIndex;
             switch (index)
             {
                 case 0:
