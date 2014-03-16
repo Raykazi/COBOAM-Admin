@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Web;
+using COBOAM_Admin.Properties;
 
 namespace COBOAM_Admin.UserControls.WebAdmin
 {
@@ -24,6 +25,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             if (cbMonth.Items.Count != 12)
             {
                 cbMonth.Items.AddRange(new object[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" });
+                nudYear.Minimum = DateTime.Now.Year;
                 nudYear.Maximum = DateTime.Now.Year + 5;
             }
             _tuple = Program.MySql.ExecuteReader(Queries.ToString(QueryIndex.Devotion1));
@@ -46,17 +48,17 @@ namespace COBOAM_Admin.UserControls.WebAdmin
         {
             if (tbQuote.Text == string.Empty)
             {
-                MessageBox.Show("Please enter a quote.", "Error");
+                MessageBox.Show("Please enter a quote.", Resources.MB_Caption_Error);
                 return;
             }
             else if (tbScripture.Text == string.Empty)
             {
-                MessageBox.Show("Please enter a scripture.", "Error");
+                MessageBox.Show("Please enter a scripture.", Resources.MB_Caption_Error);
                 return;
             }
             else if (tbText.Text == string.Empty)
             {
-                MessageBox.Show("Please enter text.", "Error");
+                MessageBox.Show("Please enter text.", Resources.MB_Caption_Error);
                 return;
             }
             int index = lbDevotions.SelectedIndex;
