@@ -38,8 +38,8 @@
             this.lblPart1 = new System.Windows.Forms.Label();
             this.lblPart2 = new System.Windows.Forms.Label();
             this.lbGreetings = new System.Windows.Forms.ListBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.panelLeft = new System.Windows.Forms.Panel();
+            this.panelLeft.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
@@ -132,20 +132,20 @@
             this.lbGreetings.TabIndex = 7;
             this.lbGreetings.SelectedIndexChanged += new System.EventHandler(this.lbGreetings_SelectedIndexChanged);
             // 
-            // panel1
+            // panelLeft
             // 
-            this.panel1.Controls.Add(this.lbGreetings);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(135, 484);
-            this.panel1.TabIndex = 8;
+            this.panelLeft.Controls.Add(this.lbGreetings);
+            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(135, 484);
+            this.panelLeft.TabIndex = 8;
             // 
             // Greetings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.lblPart2);
             this.Controls.Add(this.lblPart1);
             this.Controls.Add(this.lblTitle);
@@ -157,7 +157,7 @@
             this.Controls.Add(this.btnSave);
             this.Name = "Greetings";
             this.Size = new System.Drawing.Size(599, 484);
-            this.panel1.ResumeLayout(false);
+            this.panelLeft.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,6 +175,6 @@
         private System.Windows.Forms.Label lblPart1;
         private System.Windows.Forms.Label lblPart2;
         private System.Windows.Forms.ListBox lbGreetings;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelLeft;
     }
 }
