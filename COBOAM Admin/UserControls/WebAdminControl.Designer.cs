@@ -38,6 +38,7 @@ namespace COBOAM_Admin.UserControls
             this.Devotion = new COBOAM_Admin.UserControls.WebAdmin.Devotion();
             this.tpGreetings = new System.Windows.Forms.TabPage();
             this.Greetings = new COBOAM_Admin.UserControls.WebAdmin.Greetings();
+            this.tpAnnouncements = new System.Windows.Forms.TabPage();
             this.tabControl.SuspendLayout();
             this.tpActivity.SuspendLayout();
             this.tpDevotion.SuspendLayout();
@@ -48,6 +49,7 @@ namespace COBOAM_Admin.UserControls
             // 
             this.tabControl.Alignment = System.Windows.Forms.TabAlignment.Bottom;
             this.tabControl.Controls.Add(this.tpActivity);
+            this.tabControl.Controls.Add(this.tpAnnouncements);
             this.tabControl.Controls.Add(this.tpDevotion);
             this.tabControl.Controls.Add(this.tpGreetings);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -115,6 +117,16 @@ namespace COBOAM_Admin.UserControls
             this.Greetings.Size = new System.Drawing.Size(1036, 644);
             this.Greetings.TabIndex = 0;
             // 
+            // tpAnnouncements
+            // 
+            this.tpAnnouncements.Location = new System.Drawing.Point(4, 4);
+            this.tpAnnouncements.Name = "tpAnnouncements";
+            this.tpAnnouncements.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAnnouncements.Size = new System.Drawing.Size(1042, 650);
+            this.tpAnnouncements.TabIndex = 3;
+            this.tpAnnouncements.Text = "Announcements";
+            this.tpAnnouncements.UseVisualStyleBackColor = true;
+            // 
             // WebAdminControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,5 +152,6 @@ namespace COBOAM_Admin.UserControls
         private Devotion Devotion;
         private System.Windows.Forms.TabPage tpGreetings;
         private Greetings Greetings;
+        private System.Windows.Forms.TabPage tpAnnouncements;
     }
 }

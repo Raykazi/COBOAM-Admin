@@ -43,10 +43,10 @@ namespace COBOAM_Admin.UserControls
                 case 0:
                     LoadLogs();
                     break;
-                case 1:
+                case 2:
                     LoadDevotions();
                     break;
-                case 2:
+                case 3:
                     LoadGreetings();
                     break;
             }
