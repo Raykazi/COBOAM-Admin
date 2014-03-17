@@ -61,6 +61,15 @@ namespace COBOAM_Admin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create new.....
+        /// </summary>
+        internal static string Listbox_Create_New {
+            get {
+                return ResourceManager.GetString("Listbox_Create_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error!.
         /// </summary>
         internal static string MB_Caption_Error {
