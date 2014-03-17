@@ -35,7 +35,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             {
                 lbDevotions.Items.Clear();
             }
-            lbDevotions.Items.Add("Create new...");
+            lbDevotions.Items.Add(Resources.Listbox_Create_New);
             for (int i = 0; i < rowCount; i++)
             {
                 if (_devotionData[1][i].Length == 1)
@@ -73,8 +73,8 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             {
                 query = MySql.GetQuery(QueryIndex.Devotion2, month, year, quote, scripture, text);
                 result = Program.MySql.ExecuteNonQuery(query);
-                query = MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has created the Devotion for " + month + "/" + year + ".");
                 if (result != 1) return;
+                query = MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has created the Devotion for " + month + "/" + year + ".");
                 result = Program.MySql.ExecuteNonQuery(query);
                 if (result == 1)
                 {
@@ -86,9 +86,9 @@ namespace COBOAM_Admin.UserControls.WebAdmin
                 index -= 1;
                 int ID = Convert.ToInt32(_devotionData[0][index]);
                 query = MySql.GetQuery(QueryIndex.Devotion3, ID, quote, scripture, text, month, year);
-                result = Program.MySql.ExecuteNonQuery(query);
-                query = MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has updated the Devotion for " + month + "/" + year + ".");
+                result = Program.MySql.ExecuteNonQuery(query); 
                 if (result != 1) return;
+                query = MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has updated the Devotion for " + month + "/" + year + ".");
                 result = Program.MySql.ExecuteNonQuery(query);
                 if (result == 1)
                 {
