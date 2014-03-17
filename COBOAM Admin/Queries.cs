@@ -22,8 +22,18 @@
                     return "INSERT INTO `devotion` (`Month`,`Year`,`Quote`,`Scripture`,`Text`) VALUES('{0}','{1}','{2}','{3}','{4}');";
                 case QueryIndex.Devotion3:
                     return "UPDATE `devotion` SET `Quote`='{1}', `Scripture`='{2}', `Text`='{3}', `Month`='{4}', `Year`='{5}' WHERE `ID` = '{0}'";
-                    case QueryIndex.Devotion4:
+                case QueryIndex.Devotion4:
                     return "DELETE FROM `devotion` WHERE `Month`='{0}' AND `Year`='{1}'";
+                case QueryIndex.Greetings1:
+                    return "SELECT * FROM `greetings` ORDER BY `ID` ASC";
+                case QueryIndex.Greetings2:
+                    return "UPDATE `greetings` SET `Current`= 0";
+                case QueryIndex.Greetings3:
+                    return "INSERT INTO `greetings` (Current, Title, Part1, Part2) VALUES('{0}','{1}','{2}','{3}')";
+                case QueryIndex.Greetings4:
+                    return "UPDATE `greetings` SET `Current`='{0}',`Title`='{1}', `Part1`='{2}', `Part2`='{3}' WHERE `ID`='{4}'";
+                case QueryIndex.Greetings5:
+                    return "DELETE FROM `greetings` WHERE `ID`='{0}'";
             }
             return "";
         }
@@ -39,6 +49,11 @@
         Devotion1,
         Devotion2,
         Devotion3,
-        Devotion4
+        Devotion4,
+        Greetings1,
+        Greetings2,
+        Greetings3,
+        Greetings4,
+        Greetings5
     }
 }
