@@ -54,6 +54,7 @@ namespace COBOAM_Admin
         private int HandleLogin(string query)
         {
             Tuple<List<string>[], int> tuple = Program.MySql.ExecuteReader(query);
+            if (tuple == null) return -1;
             List<string>[] userInfo = tuple.Item1;
             int loginResult = tuple.Item2;
             string ipAddress;
