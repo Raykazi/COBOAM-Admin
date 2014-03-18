@@ -30,15 +30,14 @@ namespace COBOAM_Admin
             {
                 switch (ex.Number)
                 {
-                    case 0:
+                    case 1042:
                         MessageBox.Show(@"Cannot connect to server.  Contact administrator");
                         break;
-                    case 1042:
-                        MessageBox.Show(ex.Message);
-                        break;
-
                     case 1045:
                         MessageBox.Show(@"Invalid username/password, please try again");
+                        break;
+                    default:
+                        MessageBox.Show(ex.Message);
                         break;
                 }
                 return false;
