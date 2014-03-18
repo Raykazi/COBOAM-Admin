@@ -79,6 +79,15 @@ namespace COBOAM_Admin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirmation.
+        /// </summary>
+        internal static string MB_Confirmation {
+            get {
+                return ResourceManager.GetString("MB_Confirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap New_COBOAM {

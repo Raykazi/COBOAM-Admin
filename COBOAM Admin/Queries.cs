@@ -34,6 +34,14 @@
                     return "UPDATE `greetings` SET `Current`='{0}',`Title`='{1}', `Part1`='{2}', `Part2`='{3}' WHERE `ID`='{4}'";
                 case QueryIndex.Greetings5:
                     return "DELETE FROM `greetings` WHERE `ID`='{0}'";
+                case QueryIndex.Announcement1:
+                    return "SELECT * FROM `announcement` ORDER BY `ID` ASC";
+                case QueryIndex.Announcement2:
+                    return "INSERT INTO `announcement` (Title, Text, StartDate, ExpDate) VALUES('{0}','{1}','{2}','{3}')";
+                case QueryIndex.Announcement3:
+                    return "UPDATE `announcement` SET `Title`='{0}', `Text`='{1}', `StartDate`='{2}', `ExpDate`='{3}' WHERE `ID`='{4}'";
+                case QueryIndex.Announcement4:
+                    return "DELETE FROM `announcement` WHERE `ID`='{0}'";
             }
             return "";
         }
@@ -54,6 +62,10 @@
         Greetings2,
         Greetings3,
         Greetings4,
-        Greetings5
+        Greetings5,
+        Announcement1,
+        Announcement2,
+        Announcement3,
+        Announcement4
     }
 }

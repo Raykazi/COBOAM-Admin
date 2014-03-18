@@ -71,6 +71,12 @@
     <Compile Include="UserControls\WebAdmin\Activity.Designer.cs">
       <DependentUpon>Activity.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\WebAdmin\Announcements.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WebAdmin\Announcements.Designer.cs">
+      <DependentUpon>Announcements.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\WebAdmin\Devotion.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WebAdmin\Activity.resx">
       <DependentUpon>Activity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WebAdmin\Announcements.resx">
+      <DependentUpon>Announcements.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WebAdmin\Devotion.resx">
       <DependentUpon>Devotion.cs</DependentUpon>

@@ -16,6 +16,7 @@ namespace COBOAM_Admin.UserControls
         private void WebAdminControl_Load(object sender, EventArgs e)
         {
             LoadLogs();
+            LoadAnnouncements();
             LoadDevotions();
             LoadGreetings();
         }
@@ -34,6 +35,10 @@ namespace COBOAM_Admin.UserControls
         {
             Greetings.Load();
         }
+        private void LoadAnnouncements()
+        {
+            Announcements.Load();
+        }
 
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -42,6 +47,9 @@ namespace COBOAM_Admin.UserControls
             {
                 case 0:
                     LoadLogs();
+                    break;
+                case 1:
+                    LoadAnnouncements();
                     break;
                 case 2:
                     LoadDevotions();

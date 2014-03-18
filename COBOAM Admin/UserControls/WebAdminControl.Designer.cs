@@ -34,13 +34,15 @@ namespace COBOAM_Admin.UserControls
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tpActivity = new System.Windows.Forms.TabPage();
             this.Activity = new COBOAM_Admin.UserControls.WebAdmin.Activity();
+            this.tpAnnouncements = new System.Windows.Forms.TabPage();
             this.tpDevotion = new System.Windows.Forms.TabPage();
             this.Devotion = new COBOAM_Admin.UserControls.WebAdmin.Devotion();
             this.tpGreetings = new System.Windows.Forms.TabPage();
             this.Greetings = new COBOAM_Admin.UserControls.WebAdmin.Greetings();
-            this.tpAnnouncements = new System.Windows.Forms.TabPage();
+            this.Announcements = new COBOAM_Admin.UserControls.WebAdmin.Announcements();
             this.tabControl.SuspendLayout();
             this.tpActivity.SuspendLayout();
+            this.tpAnnouncements.SuspendLayout();
             this.tpDevotion.SuspendLayout();
             this.tpGreetings.SuspendLayout();
             this.SuspendLayout();
@@ -78,6 +80,17 @@ namespace COBOAM_Admin.UserControls
             this.Activity.Name = "Activity";
             this.Activity.Size = new System.Drawing.Size(1036, 644);
             this.Activity.TabIndex = 0;
+            // 
+            // tpAnnouncements
+            // 
+            this.tpAnnouncements.Controls.Add(this.Announcements);
+            this.tpAnnouncements.Location = new System.Drawing.Point(4, 4);
+            this.tpAnnouncements.Name = "tpAnnouncements";
+            this.tpAnnouncements.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAnnouncements.Size = new System.Drawing.Size(1042, 650);
+            this.tpAnnouncements.TabIndex = 3;
+            this.tpAnnouncements.Text = "Announcements";
+            this.tpAnnouncements.UseVisualStyleBackColor = true;
             // 
             // tpDevotion
             // 
@@ -117,15 +130,13 @@ namespace COBOAM_Admin.UserControls
             this.Greetings.Size = new System.Drawing.Size(1036, 644);
             this.Greetings.TabIndex = 0;
             // 
-            // tpAnnouncements
+            // Announcements
             // 
-            this.tpAnnouncements.Location = new System.Drawing.Point(4, 4);
-            this.tpAnnouncements.Name = "tpAnnouncements";
-            this.tpAnnouncements.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAnnouncements.Size = new System.Drawing.Size(1042, 650);
-            this.tpAnnouncements.TabIndex = 3;
-            this.tpAnnouncements.Text = "Announcements";
-            this.tpAnnouncements.UseVisualStyleBackColor = true;
+            this.Announcements.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Announcements.Location = new System.Drawing.Point(3, 3);
+            this.Announcements.Name = "Announcements";
+            this.Announcements.Size = new System.Drawing.Size(1036, 644);
+            this.Announcements.TabIndex = 0;
             // 
             // WebAdminControl
             // 
@@ -137,6 +148,7 @@ namespace COBOAM_Admin.UserControls
             this.Load += new System.EventHandler(this.WebAdminControl_Load);
             this.tabControl.ResumeLayout(false);
             this.tpActivity.ResumeLayout(false);
+            this.tpAnnouncements.ResumeLayout(false);
             this.tpDevotion.ResumeLayout(false);
             this.tpGreetings.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -153,5 +165,6 @@ namespace COBOAM_Admin.UserControls
         private System.Windows.Forms.TabPage tpGreetings;
         private Greetings Greetings;
         private System.Windows.Forms.TabPage tpAnnouncements;
+        private Announcements Announcements;
     }
 }
