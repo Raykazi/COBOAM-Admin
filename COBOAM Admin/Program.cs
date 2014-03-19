@@ -9,7 +9,8 @@ namespace COBOAM_Admin
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        static readonly string[] Config = File.ReadAllLines("Config.ini");
+        public const string CFileName = "Config.xml";
+        public static bool ConfigExist;
         public static MySql MySql;
 
         #region DB Connection Variables
@@ -31,7 +32,9 @@ namespace COBOAM_Admin
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Splash splash = new Splash(Config);
+            if (File.Exists(Application.StartupPath + "\\" + CFileName))
+                ConfigExist = true;
+            Splash splash = new Splash();
             Application.Run(splash);
             if (splash.LoginStatus)
                 Application.Run(new FrmMain());
