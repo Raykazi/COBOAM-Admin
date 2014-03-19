@@ -15,12 +15,13 @@ namespace COBOAM_Admin
 
         public MySql(string server, string port, string database, string username, string password)
         {
-            string conString = "SERVER=" + server + ";" + "Port=" + port + ";" + "DATABASE=" + database + ";" + "UID=" + username + ";" + "PASSWORD=" + password + ";";
+            string conString = "SERVER=" + server + ";" + "Port=" + port + ";" + "DATABASE=" + database + ";" + "UID=" + username + ";" + "PASSWORD=" + password + ";Convert Zero Datetime=True;";
             _connection = new MySqlConnection(conString);
         }
 
         private bool OpenConnection()
         {
+        Reconnect:
             try
             {
                 _connection.Open();
@@ -42,6 +43,16 @@ namespace COBOAM_Admin
                 }
                 return false;
             }
+            catch (InvalidOperationException)
+            {
+                _connection.Close();
+                goto Reconnect;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
         }
 
         internal static string GetQuery(QueryIndex qi, params object[] args)
@@ -60,6 +71,7 @@ namespace COBOAM_Admin
             MySqlDataReader mReader = _mCmd.ExecuteReader();
             _mCmd = null;
             List<string>[] list = new List<string>[mReader.FieldCount];
+            
             for (int i = 0; i < (list.Length); i++)
             {
                 list[i] = new List<string>();
@@ -88,7 +100,7 @@ namespace COBOAM_Admin
         {
             if (!OpenConnection()) return -1;
             _mCmd = new MySqlCommand(query, _connection);
-             int result = _mCmd.ExecuteNonQuery();
+            int result = _mCmd.ExecuteNonQuery();
             _mCmd = null;
             CloseConnection();
             return result;
