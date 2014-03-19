@@ -2,19 +2,23 @@
 using System.ComponentModel;
 using System.Threading;
 using System.Windows.Forms;
+using COBOAM_Admin.UserControls;
+using COBOAM_Admin.UserControls.WebAdmin;
+using System.Xml;
 
 namespace COBOAM_Admin
 {
     public partial class Splash : Form
     {
         private readonly FrmLogin _frmLogin;
-        private readonly string[] _config;
+        private readonly FrmConfig _frmConfig;
+        private XmlReader _reader;
 
-        public Splash(string[] config)
+        public Splash()
         {
             InitializeComponent();
             _frmLogin = new FrmLogin(this);
-            _config = config;
+            _frmConfig = new FrmConfig();
         }
 
         public bool LoginStatus { get; set; }
@@ -46,28 +50,39 @@ namespace COBOAM_Admin
 
         private void Splash_Load(object sender, EventArgs e)
         {
+            if (!Program.ConfigExist)
+                ShowConfig();
+            _reader = XmlReader.Create(Application.StartupPath + "\\" + Program.CFileName);
             BWLoad.RunWorkerAsync();
+        }
+
+        private void ShowConfig()
+        {
+            var result = MessageBox.Show("Config file cannot be found. Would you like to create it now?",
+                "Create Config", MessageBoxButtons.YesNo);
+            if (result != DialogResult.Yes) Application.Exit();
+            bool doConfig = true;
+            while (doConfig)
+            {
+                doConfig = false;
+                _frmConfig.ShowDialog();
+            }
         }
 
         private void BWLoad_DoWork(object sender, DoWorkEventArgs e)
         {
-            for (int i = 0; i < _config.Length; i++)
+            while (_reader.Read())
             {
-                if (_config[i].StartsWith("["))
-                    continue;
-                if (_config[i].StartsWith("Username"))
-                    Program.mUN = _config[i].Substring(_config[i].IndexOf('=') + 1);
-                if (_config[i].StartsWith("Password"))
-                    Program.mPW = _config[i].Substring(_config[i].IndexOf('=') + 1);
-                if (_config[i].StartsWith("Host"))
-                    Program.mHost = _config[i].Substring(_config[i].IndexOf('=') + 1);
-                if (_config[i].StartsWith("Port"))
-                    Program.mPort = _config[i].Substring(_config[i].IndexOf('=') + 1);
-                if (_config[i].StartsWith("DB"))
-                    Program.mDB = _config[i].Substring(_config[i].IndexOf('=') + 1);
-                BWLoad.ReportProgress((100 / _config.Length) * i);
+                if (_reader.NodeType != XmlNodeType.Element || _reader.Name != "Database") continue;
+                Program.mUN = _reader.GetAttribute(0);
+                Program.mPW = _reader.GetAttribute(1);
+                Program.mHost = _reader.GetAttribute(2);
+                Program.mPort = _reader.GetAttribute(3);
+                Program.mDB = _reader.GetAttribute(4);
+                BWLoad.ReportProgress((100 / _reader.AttributeCount) * _reader.AttributeCount);
                 Thread.Sleep(100);
             }
+
             Program.MySql = new MySql(Program.mHost, Program.mPort, Program.mDB, Program.mUN, Program.mPW);
         }
 
@@ -81,16 +96,6 @@ namespace COBOAM_Admin
             {
                 Status = @"Loading Config";
             }
-            //else switch (PBar.Value)
-            //    {
-            //        case 50:
-            //            PTimer = true;
-            //            break;
-            //        case 100:
-            //            PTimer = true;
-            //            Timer.Enabled = false;
-            //            break;
-            //    }
             PBar.Value = e.ProgressPercentage;
         }
 
