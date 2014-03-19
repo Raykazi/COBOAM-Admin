@@ -16,7 +16,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
     {
         Tuple<List<string>[], int> _tuple;
         List<string>[] _announcementData;
-        private DateTime _cDate = DateTime.Now;
+        private readonly DateTime _cDate = DateTime.Now;
         public Announcements()
         {
             InitializeComponent();
@@ -59,9 +59,9 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             string query;
             string title = HttpUtility.HtmlEncode(tbTitle.Text);
             string text = HttpUtility.HtmlEncode(tbText.Text);
-            DateTime Start = dtpStart.Value;
-            DateTime End = dtpStop.Value;
-            if (index == 0)
+            string Start = dtpStart.Value.Year + "-" + dtpStart.Value.Month + "-" + dtpStart.Value.Day;
+            string End = dtpStop.Value.Year + "-" + dtpStop.Value.Month + "-" + dtpStop.Value.Day;
+            if (index <= 0)
             {
                 query = MySql.GetQuery(QueryIndex.Announcement2, title, text, Start, End);
                 result = Program.MySql.ExecuteNonQuery(query);
@@ -91,7 +91,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dialogresult = MessageBox.Show("Are you sure you want to delete Announcement \"" + tbTitle + "\"?", Resources.MB_Confirmation, MessageBoxButtons.YesNo);
+            DialogResult dialogresult = MessageBox.Show("Are you sure you want to delete Announcement \"" + tbTitle.Text + "\"?", Resources.MB_Confirmation, MessageBoxButtons.YesNo);
             if (dialogresult != DialogResult.Yes) return;
             string query = MySql.GetQuery(QueryIndex.Announcement4, _announcementData[0][lbAnnouncements.SelectedIndex-1]);
             var result = Program.MySql.ExecuteNonQuery(query);
@@ -99,7 +99,6 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             query = MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has deleted the Announcement for  \"" + tbTitle + "\".");
             result = Program.MySql.ExecuteNonQuery(query);
             if (result != 1) return;
-            //MessageBox.Show("Devotion deleted for " + month + "/" + year);
             Load();
         }
 
@@ -114,7 +113,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
                     dtpStart.Value = DateTime.Now;
                     dtpStop.Value = DateTime.Now.AddDays(7);
                     break;
-                case 1:
+                default:
                     index -= 1;
                     tbTitle.Text = HttpUtility.HtmlDecode(_announcementData[2][index]);
                     tbText.Text = HttpUtility.HtmlDecode(_announcementData[3][index]);
