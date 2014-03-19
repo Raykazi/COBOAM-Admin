@@ -53,11 +53,11 @@
     <Compile Include="UserControls\MediaSalesControl.Designer.cs">
       <DependentUpon>MediaSalesControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SettingsControl.cs">
+    <Compile Include="UserControls\Settings.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\SettingsControl.Designer.cs">
-      <DependentUpon>SettingsControl.cs</DependentUpon>
+    <Compile Include="UserControls\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\WebAdminControl.cs">
       <SubType>UserControl</SubType>
@@ -83,6 +83,12 @@
     <Compile Include="UserControls\WebAdmin\Devotion.Designer.cs">
       <DependentUpon>Devotion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConfig.Designer.cs">
+      <DependentUpon>FrmConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\WebAdmin\Greetings.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -92,8 +98,8 @@
     <EmbeddedResource Include="UserControls\MediaSalesControl.resx">
       <DependentUpon>MediaSalesControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\SettingsControl.resx">
-      <DependentUpon>SettingsControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WebAdminControl.resx">
       <DependentUpon>WebAdminControl.cs</DependentUpon>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WebAdmin\Devotion.resx">
       <DependentUpon>Devotion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConfig.resx">
+      <DependentUpon>FrmConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WebAdmin\Greetings.resx">
       <DependentUpon>Greetings.cs</DependentUpon>
