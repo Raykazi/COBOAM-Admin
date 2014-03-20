@@ -63,31 +63,27 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         }
 
-        public void Activity_Load(object sender, EventArgs e)
+        public void Activity_Load(object sender = null, EventArgs e = null)
         {
             cbTypes.DisplayMember = "Text";
             cbTypes.ValueMember = "Value";
-            if (_list.Capacity != 0)
+            if (_list.Capacity == 0)
             {
-                _list.Clear();
-            }
-            else
-            {
-                cbi = new ComboBoxItem { Text = "All", Value = 0 };
+                cbi = new ComboBoxItem {Text = "All", Value = 0};
                 _list.Add(cbi);
-                cbi = new ComboBoxItem { Text = "Announcment", Value = 2 };
+                cbi = new ComboBoxItem {Text = "Announcment", Value = 2};
                 _list.Add(cbi);
-                cbi = new ComboBoxItem { Text = "Devotion", Value = 3 };
+                cbi = new ComboBoxItem {Text = "Devotion", Value = 3};
                 _list.Add(cbi);
-                cbi = new ComboBoxItem { Text = "Greetings", Value = 4 };
+                cbi = new ComboBoxItem {Text = "Greetings", Value = 4};
                 _list.Add(cbi);
-                cbi = new ComboBoxItem { Text = "Security", Value = 1 };
+                cbi = new ComboBoxItem {Text = "Security", Value = 1};
                 _list.Add(cbi);
-                cbi = new ComboBoxItem { Text = "Sermons", Value = 6 };
+                cbi = new ComboBoxItem {Text = "Sermons", Value = 6};
                 _list.Add(cbi);
-                cbi = new ComboBoxItem { Text = "Testimony", Value = 7 };
+                cbi = new ComboBoxItem {Text = "Testimony", Value = 7};
                 _list.Add(cbi);
-                cbi = new ComboBoxItem { Text = "Users", Value = 5 };
+                cbi = new ComboBoxItem {Text = "Users", Value = 5};
                 _list.Add(cbi);
             }
             cbTypes.DataSource = _list;
