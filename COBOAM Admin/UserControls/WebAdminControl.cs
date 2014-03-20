@@ -12,15 +12,15 @@ namespace COBOAM_Admin.UserControls
 
         private void WebAdminControl_Load(object sender, EventArgs e)
         {
-            LoadLogs(sender, e);
+            LoadLogs();
             LoadAnnouncements();
             LoadDevotions();
             LoadGreetings();
         }
 
-        private void LoadLogs(object s, EventArgs e)
+        private void LoadLogs()
         {
-            Activity.Activity_Load(s,e);
+            Activity.Activity_Load();
         }
 
         private void LoadDevotions()
@@ -34,7 +34,7 @@ namespace COBOAM_Admin.UserControls
         }
         private void LoadAnnouncements()
         {
-            Announcements.Load();
+            Announcements.Announcements_Load();
         }
 
 
@@ -43,7 +43,7 @@ namespace COBOAM_Admin.UserControls
             switch (tabControl.SelectedIndex)
             {
                 case 0:
-                    LoadLogs(sender,e);
+                    LoadLogs();
                     break;
                 case 1:
                     LoadAnnouncements();
