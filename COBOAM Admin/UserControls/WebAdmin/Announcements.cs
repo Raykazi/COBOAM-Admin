@@ -17,26 +17,6 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             InitializeComponent();
         }
 
-        public void Load()
-        {
-            _tuple = Program.MySql.ExecuteReader(Queries.ToString(QueryIndex.Announcement1));
-            _announcementData = _tuple.Item1;
-            int rowCount = _tuple.Item2;
-            if (lbAnnouncements.Items.Count > 0)
-            {
-                lbAnnouncements.Items.Clear();
-            }
-            lbAnnouncements.Items.Add(Resources.LB_Create_New);
-            for (int i = 0; i < rowCount; i++)
-            {
-                DateTime dbEDate = DateTime.Parse(_announcementData[5][i]);
-                if (_cDate > dbEDate)
-                    lbAnnouncements.Items.Add("(*) " + _announcementData[2][i]);
-                else
-                    lbAnnouncements.Items.Add(_announcementData[2][i]);
-            }
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (tbTitle.Text == String.Empty)
@@ -86,7 +66,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dialogresult = MessageBox.Show("Are you sure you want to delete Announcement \"" + tbTitle.Text + "\"?", Resources.MB_Confirmation, MessageBoxButtons.YesNo);
+            DialogResult dialogresult = MessageBox.Show(Resource.Format(Resources.MB_Announcements_Delete, tbTitle.Text), Resources.MB_Confirmation, MessageBoxButtons.YesNo);
             if (dialogresult != DialogResult.Yes) return;
             string query = Classes.MySql.GetQuery(QueryIndex.Announcement4, _announcementData[0][lbAnnouncements.SelectedIndex-1]);
             var result = Program.MySql.ExecuteNonQuery(query);
@@ -94,7 +74,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             query = Classes.MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has deleted the Announcement for  \"" + tbTitle + "\".");
             result = Program.MySql.ExecuteNonQuery(query);
             if (result != 1) return;
-            Load();
+            Announcements_Load();
         }
 
         private void lbAnnouncements_SelectedIndexChanged(object sender, EventArgs e)
@@ -116,6 +96,27 @@ namespace COBOAM_Admin.UserControls.WebAdmin
                     dtpStop.Value = DateTime.Parse(_announcementData[5][index]);
                     break;
             }
+        }
+
+        public void Announcements_Load(object sender = null, EventArgs e = null)
+        {
+            _tuple = Program.MySql.ExecuteReader(Queries.ToString(QueryIndex.Announcement1));
+            _announcementData = _tuple.Item1;
+            int rowCount = _tuple.Item2;
+            if (lbAnnouncements.Items.Count > 0)
+            {
+                lbAnnouncements.Items.Clear();
+            }
+            lbAnnouncements.Items.Add(Resources.LB_Create_New);
+            for (int i = 0; i < rowCount; i++)
+            {
+                DateTime dbEDate = DateTime.Parse(_announcementData[5][i]);
+                if (_cDate > dbEDate)
+                    lbAnnouncements.Items.Add("(*) " + _announcementData[2][i]);
+                else
+                    lbAnnouncements.Items.Add(_announcementData[2][i]);
+            }
+
         }
     }
 }

@@ -164,6 +164,7 @@
             this.Controls.Add(this.panelLeft);
             this.Name = "Announcements";
             this.Size = new System.Drawing.Size(636, 478);
+            this.Load += new System.EventHandler(this.Announcements_Load);
             this.panelLeft.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
