@@ -160,6 +160,15 @@ namespace COBOAM_Admin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete Announcement &quot;{0}&quot;?.
+        /// </summary>
+        public static string MB_Announcements_Delete {
+            get {
+                return ResourceManager.GetString("MB_Announcements_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error!.
         /// </summary>
         public static string MB_Caption_Error {

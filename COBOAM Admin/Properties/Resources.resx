@@ -172,4 +172,7 @@
   <data name="MB_Show_Config" xml:space="preserve">
     <value>Config file cannot be found. Would you like to create it now?</value>
   </data>
+  <data name="MB_Announcements_Delete" xml:space="preserve">
+    <value>Are you sure you want to delete Announcement "{0}"?</value>
+  </data>
 </root>
