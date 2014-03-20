@@ -1,6 +1,4 @@
-using System;
-
-namespace COBOAM_Admin.UserControls
+namespace COBOAM_Admin.Classes
 {
     public enum Logs 
     {
