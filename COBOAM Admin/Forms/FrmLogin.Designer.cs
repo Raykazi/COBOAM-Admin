@@ -1,4 +1,4 @@
-﻿namespace COBOAM_Admin
+﻿namespace COBOAM_Admin.Forms
 {
     partial class FrmLogin
     {

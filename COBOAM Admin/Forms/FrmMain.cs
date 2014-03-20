@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using COBOAM_Admin.Classes;
 
-namespace COBOAM_Admin
+namespace COBOAM_Admin.Forms
 {
     public partial class FrmMain : Form
     {

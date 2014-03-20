@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
+using COBOAM_Admin.Classes;
 using COBOAM_Admin.Properties;
 
 namespace COBOAM_Admin.UserControls.WebAdmin
@@ -31,7 +25,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             {
                 lbGreetings.Items.Clear();
             }
-            lbGreetings.Items.Add(Resources.Listbox_Create_New);
+            lbGreetings.Items.Add(Resources.LB_Create_New);
             for (int i = 0; i < rowCount; i++)
             {
                 lbGreetings.Items.Add(_greetingData[2][i]);
@@ -65,15 +59,15 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             int current = cbCurrent.Checked ? 1 : 0;
             if (current == 1)
             {
-                query = MySql.GetQuery(QueryIndex.Greetings2);
+                query = Classes.MySql.GetQuery(QueryIndex.Greetings2);
                 result = Program.MySql.ExecuteNonQuery(query);
             }
             if (index == 0)
             {
-                query = MySql.GetQuery(QueryIndex.Greetings3, current, title, part1, part2);
+                query = Classes.MySql.GetQuery(QueryIndex.Greetings3, current, title, part1, part2);
                 result = Program.MySql.ExecuteNonQuery(query);
                 if (result != 1) return;
-                query = MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has created the Greeting \"" + title+ "\".");
+                query = Classes.MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has created the Greeting \"" + title+ "\".");
                 result = Program.MySql.ExecuteNonQuery(query); 
                 if (result == 1)
                 {
@@ -84,10 +78,10 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             {
                 index -= 1;
                 int ID = Convert.ToInt32(_greetingData[0][index]);
-                query = MySql.GetQuery(QueryIndex.Greetings4, current, title, part1, part2, ID);
+                query = Classes.MySql.GetQuery(QueryIndex.Greetings4, current, title, part1, part2, ID);
                 result = Program.MySql.ExecuteNonQuery(query);
                 if (result != 1) return;
-                query = MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has updated the Greeting \"" + title+ "\".");
+                query = Classes.MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has updated the Greeting \"" + title+ "\".");
                 result = Program.MySql.ExecuteNonQuery(query);
                 if (result == 1)
                 {
@@ -103,9 +97,9 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             DialogResult dialogresult = MessageBox.Show("Are you sure you want to delete \"" + title + "\"","Confirmation", MessageBoxButtons.YesNo);
             if (dialogresult != DialogResult.Yes) return;
             var ID = _greetingData[0][lbGreetings.SelectedIndex - 1];
-            string query = MySql.GetQuery(QueryIndex.Greetings5, ID);
+            string query = Classes.MySql.GetQuery(QueryIndex.Greetings5, ID);
             var result = Program.MySql.ExecuteNonQuery(query);
-            query = MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has deleted the Greeting \"" + title + "\".");
+            query = Classes.MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has deleted the Greeting \"" + title + "\".");
             if (result == -1) return;
             result = Program.MySql.ExecuteNonQuery(query);
             if (result != 1) return;

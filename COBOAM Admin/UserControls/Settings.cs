@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Xml;
+using COBOAM_Admin.Classes;
 
 namespace COBOAM_Admin.UserControls
 {

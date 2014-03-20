@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
 using System.Windows.Forms;
-using COBOAM_Admin.UserControls.WebAdmin;
 
 namespace COBOAM_Admin.UserControls
 {
@@ -15,15 +12,15 @@ namespace COBOAM_Admin.UserControls
 
         private void WebAdminControl_Load(object sender, EventArgs e)
         {
-            LoadLogs();
+            LoadLogs(sender, e);
             LoadAnnouncements();
             LoadDevotions();
             LoadGreetings();
         }
 
-        private void LoadLogs()
+        private void LoadLogs(object s, EventArgs e)
         {
-            Activity.Load();
+            Activity.Activity_Load(s,e);
         }
 
         private void LoadDevotions()
@@ -46,7 +43,7 @@ namespace COBOAM_Admin.UserControls
             switch (tabControl.SelectedIndex)
             {
                 case 0:
-                    LoadLogs();
+                    LoadLogs(sender,e);
                     break;
                 case 1:
                     LoadAnnouncements();

@@ -1,5 +1,4 @@
-﻿using System;
-using COBOAM_Admin.UserControls.WebAdmin;
+﻿using COBOAM_Admin.UserControls.WebAdmin;
 
 namespace COBOAM_Admin.UserControls
 {

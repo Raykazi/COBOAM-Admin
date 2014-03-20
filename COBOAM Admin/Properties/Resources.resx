@@ -127,10 +127,49 @@
   <data name="MB_Caption_Error" xml:space="preserve">
     <value>Error!</value>
   </data>
-  <data name="Listbox_Create_New" xml:space="preserve">
+  <data name="LB_Create_New" xml:space="preserve">
     <value>Create new....</value>
   </data>
   <data name="MB_Confirmation" xml:space="preserve">
     <value>Confirmation</value>
+  </data>
+  <data name="Activity_No_Logs" xml:space="preserve">
+    <value>No logs for {0}</value>
+  </data>
+  <data name="Devotion_Need_Quote" xml:space="preserve">
+    <value>Please enter a quote.</value>
+  </data>
+  <data name="Devotion_Need_Scripture" xml:space="preserve">
+    <value>Please enter a scripture.</value>
+  </data>
+  <data name="General_Need_Text" xml:space="preserve">
+    <value>Please enter text.</value>
+  </data>
+  <data name="Devotion_Added" xml:space="preserve">
+    <value>Devotion added for {0}/{1}</value>
+  </data>
+  <data name="Devotion_Updated" xml:space="preserve">
+    <value>Devotion updated for {0}/{1}.</value>
+  </data>
+  <data name="Devotion_Deleted" xml:space="preserve">
+    <value>Devotion deleted for {0}/{1}</value>
+  </data>
+  <data name="Mysql_1042" xml:space="preserve">
+    <value>Cannot connect to server.  Contact administrator</value>
+  </data>
+  <data name="Mysql_1045" xml:space="preserve">
+    <value>Invalid username/password, please try again</value>
+  </data>
+  <data name="Announcements_Need_Title" xml:space="preserve">
+    <value>Please enter a title.</value>
+  </data>
+  <data name="Announcements_Created" xml:space="preserve">
+    <value>Announcement "{0}" created.</value>
+  </data>
+  <data name="Announcements_Updated" xml:space="preserve">
+    <value>Announcement "{0}" updated.</value>
+  </data>
+  <data name="MB_Show_Config" xml:space="preserve">
+    <value>Config file cannot be found. Would you like to create it now?</value>
   </data>
 </root>

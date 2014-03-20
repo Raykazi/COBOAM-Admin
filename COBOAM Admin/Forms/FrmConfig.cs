@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace COBOAM_Admin.UserControls.WebAdmin
+namespace COBOAM_Admin.Forms
 {
     public partial class FrmConfig : Form
     {

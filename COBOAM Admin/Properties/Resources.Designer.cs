@@ -22,7 +22,7 @@ namespace COBOAM_Admin.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace COBOAM_Admin.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("COBOAM_Admin.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace COBOAM_Admin.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,18 +61,108 @@ namespace COBOAM_Admin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No logs for {0}.
+        /// </summary>
+        public static string Activity_No_Logs {
+            get {
+                return ResourceManager.GetString("Activity_No_Logs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Announcement &quot;{0}&quot; created..
+        /// </summary>
+        public static string Announcements_Created {
+            get {
+                return ResourceManager.GetString("Announcements_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a title..
+        /// </summary>
+        public static string Announcements_Need_Title {
+            get {
+                return ResourceManager.GetString("Announcements_Need_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Announcement &quot;{0}&quot; updated..
+        /// </summary>
+        public static string Announcements_Updated {
+            get {
+                return ResourceManager.GetString("Announcements_Updated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Devotion added for {0}/{1}.
+        /// </summary>
+        public static string Devotion_Added {
+            get {
+                return ResourceManager.GetString("Devotion_Added", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Devotion deleted for {0}/{1}.
+        /// </summary>
+        public static string Devotion_Deleted {
+            get {
+                return ResourceManager.GetString("Devotion_Deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a quote..
+        /// </summary>
+        public static string Devotion_Need_Quote {
+            get {
+                return ResourceManager.GetString("Devotion_Need_Quote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a scripture..
+        /// </summary>
+        public static string Devotion_Need_Scripture {
+            get {
+                return ResourceManager.GetString("Devotion_Need_Scripture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Devotion updated for {0}/{1}..
+        /// </summary>
+        public static string Devotion_Updated {
+            get {
+                return ResourceManager.GetString("Devotion_Updated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter text..
+        /// </summary>
+        public static string General_Need_Text {
+            get {
+                return ResourceManager.GetString("General_Need_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create new.....
         /// </summary>
-        internal static string Listbox_Create_New {
+        public static string LB_Create_New {
             get {
-                return ResourceManager.GetString("Listbox_Create_New", resourceCulture);
+                return ResourceManager.GetString("LB_Create_New", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Error!.
         /// </summary>
-        internal static string MB_Caption_Error {
+        public static string MB_Caption_Error {
             get {
                 return ResourceManager.GetString("MB_Caption_Error", resourceCulture);
             }
@@ -81,16 +171,43 @@ namespace COBOAM_Admin.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Confirmation.
         /// </summary>
-        internal static string MB_Confirmation {
+        public static string MB_Confirmation {
             get {
                 return ResourceManager.GetString("MB_Confirmation", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Config file cannot be found. Would you like to create it now?.
+        /// </summary>
+        public static string MB_Show_Config {
+            get {
+                return ResourceManager.GetString("MB_Show_Config", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot connect to server.  Contact administrator.
+        /// </summary>
+        public static string Mysql_1042 {
+            get {
+                return ResourceManager.GetString("Mysql_1042", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid username/password, please try again.
+        /// </summary>
+        public static string Mysql_1045 {
+            get {
+                return ResourceManager.GetString("Mysql_1045", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap New_COBOAM {
+        public static System.Drawing.Bitmap New_COBOAM {
             get {
                 object obj = ResourceManager.GetObject("New COBOAM", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -100,7 +217,7 @@ namespace COBOAM_Admin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Splash {
+        public static System.Drawing.Bitmap Splash {
             get {
                 object obj = ResourceManager.GetObject("Splash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

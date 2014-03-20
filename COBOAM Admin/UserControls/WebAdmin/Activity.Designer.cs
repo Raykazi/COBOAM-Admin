@@ -67,15 +67,6 @@
             // cbTypes
             // 
             this.cbTypes.FormattingEnabled = true;
-            this.cbTypes.Items.AddRange(new object[] {
-            "All",
-            "Announcement",
-            "Devotion",
-            "Greetings",
-            "Security",
-            "Sermons",
-            "Testimony",
-            "Users"});
             this.cbTypes.Location = new System.Drawing.Point(64, 8);
             this.cbTypes.Name = "cbTypes";
             this.cbTypes.Size = new System.Drawing.Size(155, 21);
@@ -90,6 +81,7 @@
             this.Controls.Add(this.panelTop);
             this.Name = "Activity";
             this.Size = new System.Drawing.Size(609, 433);
+            this.Load += new System.EventHandler(this.Activity_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
             this.ResumeLayout(false);
