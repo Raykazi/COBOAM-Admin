@@ -78,7 +78,7 @@
     <Compile Include="UserControls\WebAdmin\Announcements.Designer.cs">
       <DependentUpon>Announcements.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\ComboboxItem.cs" />
+    <Compile Include="Classes\DBItem.cs" />
     <Compile Include="UserControls\WebAdmin\Devotion.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +96,12 @@
     </Compile>
     <Compile Include="UserControls\WebAdmin\Greetings.Designer.cs">
       <DependentUpon>Greetings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WebAdmin\Members.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WebAdmin\Members.Designer.cs">
+      <DependentUpon>Members.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="UserControls\MediaSalesControl.resx">
       <DependentUpon>MediaSalesControl.cs</DependentUpon>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WebAdmin\Greetings.resx">
       <DependentUpon>Greetings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WebAdmin\Members.resx">
+      <DependentUpon>Members.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Resources\New COBOAM.gif" />
     <Compile Include="Forms\FrmLogin.cs">

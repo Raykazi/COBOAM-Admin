@@ -1,6 +1,6 @@
 ﻿namespace COBOAM_Admin.Classes
 {
-    public class ComboBoxItem
+    public class DBItem
     {
         public string Text { private get; set; }
         public object Value { get; set; }

@@ -10,8 +10,8 @@ namespace COBOAM_Admin.UserControls.WebAdmin
     {
 
         Tuple<List<string>[], int> _tuple;
-        readonly List<ComboBoxItem> _list = new List<ComboBoxItem>();
-        private ComboBoxItem cbi;
+        readonly List<DBItem> _list = new List<DBItem>();
+        private DBItem cbi;
 
         public Activity()
         {
@@ -21,7 +21,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
         private void cbTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
             string query;
-            Logs type = (Logs)((ComboBoxItem) cbTypes.SelectedItem).Value;
+            Logs type = (Logs)((DBItem) cbTypes.SelectedItem).Value;
             switch (type)
             {
                 default:
@@ -69,21 +69,21 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             cbTypes.ValueMember = "Value";
             if (_list.Capacity == 0)
             {
-                cbi = new ComboBoxItem {Text = "All", Value = 0};
+                cbi = new DBItem {Text = "All", Value = 0};
                 _list.Add(cbi);
-                cbi = new ComboBoxItem {Text = "Announcment", Value = 2};
+                cbi = new DBItem {Text = "Announcment", Value = 2};
                 _list.Add(cbi);
-                cbi = new ComboBoxItem {Text = "Devotion", Value = 3};
+                cbi = new DBItem {Text = "Devotion", Value = 3};
                 _list.Add(cbi);
-                cbi = new ComboBoxItem {Text = "Greetings", Value = 4};
+                cbi = new DBItem {Text = "Greetings", Value = 4};
                 _list.Add(cbi);
-                cbi = new ComboBoxItem {Text = "Security", Value = 1};
+                cbi = new DBItem {Text = "Security", Value = 1};
                 _list.Add(cbi);
-                cbi = new ComboBoxItem {Text = "Sermons", Value = 6};
+                cbi = new DBItem {Text = "Sermons", Value = 6};
                 _list.Add(cbi);
-                cbi = new ComboBoxItem {Text = "Testimony", Value = 7};
+                cbi = new DBItem {Text = "Testimony", Value = 7};
                 _list.Add(cbi);
-                cbi = new ComboBoxItem {Text = "Users", Value = 5};
+                cbi = new DBItem {Text = "Users", Value = 5};
                 _list.Add(cbi);
             }
             cbTypes.DataSource = _list;
