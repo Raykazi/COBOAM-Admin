@@ -42,6 +42,8 @@
                     return "UPDATE `announcement` SET `Title`='{0}', `Text`='{1}', `StartDate`='{2}', `ExpDate`='{3}' WHERE `ID`='{4}'";
                 case QueryIndex.Announcement4:
                     return "DELETE FROM `announcement` WHERE `ID`='{0}'";
+                case QueryIndex.Members1:
+                    return "SELECT * FROM `login` ORDER BY `LName`";
             }
             return "";
         }
@@ -66,6 +68,7 @@
         Announcement1,
         Announcement2,
         Announcement3,
-        Announcement4
+        Announcement4,
+        Members1,
     }
 }
