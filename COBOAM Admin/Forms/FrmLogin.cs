@@ -59,9 +59,9 @@ namespace COBOAM_Admin.Forms
             if (loginResult != 1) return loginResult;
             Program.uName = userInfo[1][0];
             Program.uLvl = Convert.ToInt32(userInfo[4][0]);
-            Program.uFName = userInfo[5][0];
-            Program.uEmail = userInfo[6][0];
-            Program.uLIP = userInfo[9][0];
+            Program.uFName = string.Concat(userInfo[5][0]," ",userInfo[6][0]);
+            Program.uEmail = userInfo[7][0];
+            Program.uLIP = userInfo[10][0];
             using (WebClient wc = new WebClient())
             {
                 ipAddress = wc.DownloadString("http://channelofblessings.com/includes/IP.php");
