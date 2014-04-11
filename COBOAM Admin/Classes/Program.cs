@@ -12,7 +12,7 @@ namespace COBOAM_Admin.Classes
         /// </summary>
         public const string CFileName = "Config.xml";
         public static bool ConfigExist;
-        public static Classes.MySql MySql;
+        public static MySql MySql;
 
         #region DB Connection Variables
         public static string mUN = "";
