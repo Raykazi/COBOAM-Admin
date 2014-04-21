@@ -30,6 +30,7 @@
         {
             this.panelSide = new System.Windows.Forms.Panel();
             this.lbMembers = new System.Windows.Forms.ListBox();
+            this.tbNameFilter = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
             this.lblUN = new System.Windows.Forms.Label();
@@ -39,8 +40,8 @@
             this.lblAL = new System.Windows.Forms.Label();
             this.cbAL = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.tbNameFilter = new System.Windows.Forms.TextBox();
+            this.btnSC = new System.Windows.Forms.Button();
+            this.lblSEmail = new System.Windows.Forms.Label();
             this.panelSide.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,8 +62,17 @@
             this.lbMembers.Location = new System.Drawing.Point(0, 20);
             this.lbMembers.Name = "lbMembers";
             this.lbMembers.Size = new System.Drawing.Size(142, 579);
-            this.lbMembers.TabIndex = 0;
-            this.lbMembers.SelectedIndexChanged += new System.EventHandler(this.lbMembers_SelectedIndexChanged);
+            this.lbMembers.TabIndex = 1;
+            this.lbMembers.SelectedValueChanged += new System.EventHandler(this.lbMembers_SelectedValueChanged);
+            // 
+            // tbNameFilter
+            // 
+            this.tbNameFilter.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tbNameFilter.Location = new System.Drawing.Point(0, 0);
+            this.tbNameFilter.Name = "tbNameFilter";
+            this.tbNameFilter.Size = new System.Drawing.Size(142, 20);
+            this.tbNameFilter.TabIndex = 0;
+            this.tbNameFilter.TextChanged += new System.EventHandler(this.tbNameFilter_TextChanged);
             // 
             // lblName
             // 
@@ -79,6 +89,7 @@
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(156, 20);
             this.tbName.TabIndex = 2;
+            this.tbName.Validating += new System.ComponentModel.CancelEventHandler(this.tbName_Validating);
             // 
             // lblUN
             // 
@@ -91,10 +102,11 @@
             // 
             // tbUN
             // 
+            this.tbUN.Enabled = false;
             this.tbUN.Location = new System.Drawing.Point(208, 34);
             this.tbUN.Name = "tbUN";
             this.tbUN.Size = new System.Drawing.Size(156, 20);
-            this.tbUN.TabIndex = 2;
+            this.tbUN.TabIndex = 0;
             // 
             // lblEmail
             // 
@@ -107,10 +119,12 @@
             // 
             // tbEmail
             // 
+            this.tbEmail.BackColor = System.Drawing.SystemColors.Window;
             this.tbEmail.Location = new System.Drawing.Point(208, 60);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(156, 20);
-            this.tbEmail.TabIndex = 2;
+            this.tbEmail.TabIndex = 3;
+            this.tbEmail.Validating += new System.ComponentModel.CancelEventHandler(this.tbEmail_Validating);
             // 
             // lblAL
             // 
@@ -138,30 +152,30 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnDelete
+            // btnSC
             // 
-            this.btnDelete.Location = new System.Drawing.Point(289, 113);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 6;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnSC.Location = new System.Drawing.Point(289, 113);
+            this.btnSC.Name = "btnSC";
+            this.btnSC.Size = new System.Drawing.Size(106, 23);
+            this.btnSC.TabIndex = 6;
+            this.btnSC.Text = "Disable Account";
+            this.btnSC.UseVisualStyleBackColor = true;
+            this.btnSC.Click += new System.EventHandler(this.btnSC_Click);
             // 
-            // tbNameFilter
+            // lblSEmail
             // 
-            this.tbNameFilter.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbNameFilter.Location = new System.Drawing.Point(0, 0);
-            this.tbNameFilter.Name = "tbNameFilter";
-            this.tbNameFilter.Size = new System.Drawing.Size(142, 20);
-            this.tbNameFilter.TabIndex = 7;
-            this.tbNameFilter.TextChanged += new System.EventHandler(this.tbNameFilter_TextChanged);
+            this.lblSEmail.AutoSize = true;
+            this.lblSEmail.Location = new System.Drawing.Point(370, 63);
+            this.lblSEmail.Name = "lblSEmail";
+            this.lblSEmail.Size = new System.Drawing.Size(0, 13);
+            this.lblSEmail.TabIndex = 7;
             // 
             // Members
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.lblSEmail);
+            this.Controls.Add(this.btnSC);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cbAL);
             this.Controls.Add(this.lblAL);
@@ -174,7 +188,6 @@
             this.Controls.Add(this.panelSide);
             this.Name = "Members";
             this.Size = new System.Drawing.Size(951, 599);
-            this.Load += new System.EventHandler(this.Members_Load);
             this.panelSide.ResumeLayout(false);
             this.panelSide.PerformLayout();
             this.ResumeLayout(false);
@@ -196,6 +209,7 @@
         private System.Windows.Forms.Label lblAL;
         private System.Windows.Forms.ComboBox cbAL;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnSC;
+        private System.Windows.Forms.Label lblSEmail;
     }
 }

@@ -9,7 +9,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 {
     public partial class Announcements : UserControl
     {
-        Tuple<List<string>[], int> _tuple;
+        Tuple<List<string>[], int> _tuple = new Tuple<List<string>[], int>(null,-1);
         List<string>[] _announcementData;
         private readonly DateTime _cDate = DateTime.Now;
         public Announcements()

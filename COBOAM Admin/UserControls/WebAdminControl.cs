@@ -37,6 +37,10 @@ namespace COBOAM_Admin.UserControls
             Announcements.Announcements_Load();
         }
 
+        private void LoadMembers()
+        {
+            Members.Members_Load();
+        }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -54,7 +58,15 @@ namespace COBOAM_Admin.UserControls
                 case 3:
                     LoadGreetings();
                     break;
+                case 4:
+                    LoadMembers();
+                    break;
             }
+        }
+
+        private void tpGreetings_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

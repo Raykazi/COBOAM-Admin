@@ -32,18 +32,21 @@ namespace COBOAM_Admin.UserControls
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tpActivity = new System.Windows.Forms.TabPage();
-            this.Activity = new COBOAM_Admin.UserControls.WebAdmin.Activity();
             this.tpAnnouncements = new System.Windows.Forms.TabPage();
             this.tpDevotion = new System.Windows.Forms.TabPage();
-            this.Devotion = new COBOAM_Admin.UserControls.WebAdmin.Devotion();
             this.tpGreetings = new System.Windows.Forms.TabPage();
-            this.Greetings = new COBOAM_Admin.UserControls.WebAdmin.Greetings();
+            this.tpMembers = new System.Windows.Forms.TabPage();
+            this.Activity = new COBOAM_Admin.UserControls.WebAdmin.Activity();
             this.Announcements = new COBOAM_Admin.UserControls.WebAdmin.Announcements();
+            this.Devotion = new COBOAM_Admin.UserControls.WebAdmin.Devotion();
+            this.Greetings = new COBOAM_Admin.UserControls.WebAdmin.Greetings();
+            this.Members = new COBOAM_Admin.UserControls.WebAdmin.Members();
             this.tabControl.SuspendLayout();
             this.tpActivity.SuspendLayout();
             this.tpAnnouncements.SuspendLayout();
             this.tpDevotion.SuspendLayout();
             this.tpGreetings.SuspendLayout();
+            this.tpMembers.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -53,6 +56,7 @@ namespace COBOAM_Admin.UserControls
             this.tabControl.Controls.Add(this.tpAnnouncements);
             this.tabControl.Controls.Add(this.tpDevotion);
             this.tabControl.Controls.Add(this.tpGreetings);
+            this.tabControl.Controls.Add(this.tpMembers);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
@@ -71,14 +75,6 @@ namespace COBOAM_Admin.UserControls
             this.tpActivity.Size = new System.Drawing.Size(1042, 650);
             this.tpActivity.TabIndex = 0;
             this.tpActivity.Text = "Activity";
-            // 
-            // Activity
-            // 
-            this.Activity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Activity.Location = new System.Drawing.Point(3, 3);
-            this.Activity.Name = "Activity";
-            this.Activity.Size = new System.Drawing.Size(1036, 644);
-            this.Activity.TabIndex = 0;
             // 
             // tpAnnouncements
             // 
@@ -102,14 +98,6 @@ namespace COBOAM_Admin.UserControls
             this.tpDevotion.TabIndex = 1;
             this.tpDevotion.Text = "Devotions";
             // 
-            // Devotion
-            // 
-            this.Devotion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Devotion.Location = new System.Drawing.Point(3, 3);
-            this.Devotion.Name = "Devotion";
-            this.Devotion.Size = new System.Drawing.Size(1036, 644);
-            this.Devotion.TabIndex = 0;
-            // 
             // tpGreetings
             // 
             this.tpGreetings.Controls.Add(this.Greetings);
@@ -120,6 +108,42 @@ namespace COBOAM_Admin.UserControls
             this.tpGreetings.TabIndex = 2;
             this.tpGreetings.Text = "Greetings";
             this.tpGreetings.UseVisualStyleBackColor = true;
+            this.tpGreetings.Click += new System.EventHandler(this.tpGreetings_Click);
+            // 
+            // tpMembers
+            // 
+            this.tpMembers.Controls.Add(this.Members);
+            this.tpMembers.Location = new System.Drawing.Point(4, 4);
+            this.tpMembers.Name = "tpMembers";
+            this.tpMembers.Padding = new System.Windows.Forms.Padding(3);
+            this.tpMembers.Size = new System.Drawing.Size(1042, 650);
+            this.tpMembers.TabIndex = 4;
+            this.tpMembers.Text = "Members";
+            this.tpMembers.UseVisualStyleBackColor = true;
+            // 
+            // Activity
+            // 
+            this.Activity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Activity.Location = new System.Drawing.Point(3, 3);
+            this.Activity.Name = "Activity";
+            this.Activity.Size = new System.Drawing.Size(1036, 644);
+            this.Activity.TabIndex = 0;
+            // 
+            // Announcements
+            // 
+            this.Announcements.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Announcements.Location = new System.Drawing.Point(3, 3);
+            this.Announcements.Name = "Announcements";
+            this.Announcements.Size = new System.Drawing.Size(1036, 644);
+            this.Announcements.TabIndex = 0;
+            // 
+            // Devotion
+            // 
+            this.Devotion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Devotion.Location = new System.Drawing.Point(3, 3);
+            this.Devotion.Name = "Devotion";
+            this.Devotion.Size = new System.Drawing.Size(1036, 644);
+            this.Devotion.TabIndex = 0;
             // 
             // Greetings
             // 
@@ -129,13 +153,13 @@ namespace COBOAM_Admin.UserControls
             this.Greetings.Size = new System.Drawing.Size(1036, 644);
             this.Greetings.TabIndex = 0;
             // 
-            // Announcements
+            // Members
             // 
-            this.Announcements.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Announcements.Location = new System.Drawing.Point(3, 3);
-            this.Announcements.Name = "Announcements";
-            this.Announcements.Size = new System.Drawing.Size(1036, 644);
-            this.Announcements.TabIndex = 0;
+            this.Members.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Members.Location = new System.Drawing.Point(3, 3);
+            this.Members.Name = "Members";
+            this.Members.Size = new System.Drawing.Size(1036, 644);
+            this.Members.TabIndex = 0;
             // 
             // WebAdminControl
             // 
@@ -150,6 +174,7 @@ namespace COBOAM_Admin.UserControls
             this.tpAnnouncements.ResumeLayout(false);
             this.tpDevotion.ResumeLayout(false);
             this.tpGreetings.ResumeLayout(false);
+            this.tpMembers.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -165,5 +190,7 @@ namespace COBOAM_Admin.UserControls
         private Greetings Greetings;
         private System.Windows.Forms.TabPage tpAnnouncements;
         private Announcements Announcements;
+        private System.Windows.Forms.TabPage tpMembers;
+        private Members Members;
     }
 }

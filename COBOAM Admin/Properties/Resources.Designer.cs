@@ -196,6 +196,42 @@ namespace COBOAM_Admin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} has been created..
+        /// </summary>
+        public static string Member_Created {
+            get {
+                return ResourceManager.GetString("Member_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}&apos;s password has been reset..
+        /// </summary>
+        public static string Member_PWR {
+            get {
+                return ResourceManager.GetString("Member_PWR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}&apos;s account has been {1}..
+        /// </summary>
+        public static string Member_SC {
+            get {
+                return ResourceManager.GetString("Member_SC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}&apos;s info has been updated..
+        /// </summary>
+        public static string Member_Updated {
+            get {
+                return ResourceManager.GetString("Member_Updated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot connect to server.  Contact administrator.
         /// </summary>
         public static string Mysql_1042 {
@@ -210,6 +246,24 @@ namespace COBOAM_Admin.Properties {
         public static string Mysql_1045 {
             get {
                 return ResourceManager.GetString("Mysql_1045", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello {0}
+        ///&lt;br&gt;
+        ///&lt;br&gt;
+        ///Your account has been registered with our website.&lt;br&gt;
+        ///Below is your information to log in.&lt;br&gt;
+        ///Username: {1}&lt;br&gt;
+        ///Password: {2}&lt;br&gt;
+        ///&lt;br&gt;
+        ///To log in goto &lt;a href=&apos;http://www.channelofblessings.com/members/&apos;target=&apos;_blank&apos;&gt;Channel of Blessing&apos;s Member Area&lt;/a&gt;&lt;br&gt;
+        ///If you have any issues, please contact webmaster@channelofblessings.com or contact Bro. Trev..
+        /// </summary>
+        public static string New_Member_Email {
+            get {
+                return ResourceManager.GetString("New_Member_Email", resourceCulture);
             }
         }
         

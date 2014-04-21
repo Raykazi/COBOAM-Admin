@@ -172,4 +172,28 @@
   <data name="MB_Announcements_Delete" xml:space="preserve">
     <value>Are you sure you want to delete Announcement "{0}"?</value>
   </data>
+  <data name="Member_Created" xml:space="preserve">
+    <value>{0} has been created.</value>
+  </data>
+  <data name="Member_SC" xml:space="preserve">
+    <value>{0}'s account has been {1}.</value>
+  </data>
+  <data name="Member_PWR" xml:space="preserve">
+    <value>{0}'s password has been reset.</value>
+  </data>
+  <data name="Member_Updated" xml:space="preserve">
+    <value>{0}'s info has been updated.</value>
+  </data>
+  <data name="New_Member_Email" xml:space="preserve">
+    <value>Hello {0}
+&lt;br&gt;
+&lt;br&gt;
+Your account has been registered with our website.&lt;br&gt;
+Below is your information to log in.&lt;br&gt;
+Username: {1}&lt;br&gt;
+Password: {2}&lt;br&gt;
+&lt;br&gt;
+To log in goto &lt;a href='http://www.channelofblessings.com/members/'target='_blank'&gt;Channel of Blessing's Member Area&lt;/a&gt;&lt;br&gt;
+If you have any issues, please contact webmaster@channelofblessings.com or contact Bro. Trev.</value>
+  </data>
 </root>
