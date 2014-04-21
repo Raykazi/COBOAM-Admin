@@ -12,10 +12,11 @@ namespace COBOAM_Admin.UserControls
 
         private void WebAdminControl_Load(object sender, EventArgs e)
         {
-            LoadLogs();
-            LoadAnnouncements();
-            LoadDevotions();
-            LoadGreetings();
+            //LoadLogs();
+            //LoadAnnouncements();
+            //LoadDevotions();
+            //LoadGreetings();
+            
         }
 
         private void LoadLogs()
@@ -25,7 +26,7 @@ namespace COBOAM_Admin.UserControls
 
         private void LoadDevotions()
         {
-            Devotion.Load();
+            Devotion.Devotion_Load();
         }
 
         private void LoadGreetings()

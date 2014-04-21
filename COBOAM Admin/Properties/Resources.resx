@@ -196,4 +196,7 @@ Password: {2}&lt;br&gt;
 To log in goto &lt;a href='http://www.channelofblessings.com/members/'target='_blank'&gt;Channel of Blessing's Member Area&lt;/a&gt;&lt;br&gt;
 If you have any issues, please contact webmaster@channelofblessings.com or contact Bro. Trev.</value>
   </data>
+  <data name="MB_Devotion_Delete" xml:space="preserve">
+    <value>Are you sure you want to delete the devotion for {0}/{1}?</value>
+  </data>
 </root>

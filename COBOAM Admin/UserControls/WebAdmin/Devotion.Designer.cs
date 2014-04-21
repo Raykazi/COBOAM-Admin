@@ -47,7 +47,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(343, 461);
+            this.btnDelete.Location = new System.Drawing.Point(290, 441);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 16;
@@ -57,7 +57,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(262, 461);
+            this.btnSave.Location = new System.Drawing.Point(209, 441);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 17;
@@ -67,7 +67,7 @@
             // 
             // nudYear
             // 
-            this.nudYear.Location = new System.Drawing.Point(396, 27);
+            this.nudYear.Location = new System.Drawing.Point(343, 7);
             this.nudYear.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -85,14 +85,14 @@
             // cbMonth
             // 
             this.cbMonth.FormattingEnabled = true;
-            this.cbMonth.Location = new System.Drawing.Point(262, 26);
+            this.cbMonth.Location = new System.Drawing.Point(209, 6);
             this.cbMonth.Name = "cbMonth";
             this.cbMonth.Size = new System.Drawing.Size(121, 21);
             this.cbMonth.TabIndex = 14;
             // 
             // tbText
             // 
-            this.tbText.Location = new System.Drawing.Point(262, 154);
+            this.tbText.Location = new System.Drawing.Point(209, 134);
             this.tbText.Multiline = true;
             this.tbText.Name = "tbText";
             this.tbText.Size = new System.Drawing.Size(457, 300);
@@ -100,14 +100,14 @@
             // 
             // tbScripture
             // 
-            this.tbScripture.Location = new System.Drawing.Point(262, 110);
+            this.tbScripture.Location = new System.Drawing.Point(209, 90);
             this.tbScripture.Name = "tbScripture";
             this.tbScripture.Size = new System.Drawing.Size(190, 20);
             this.tbScripture.TabIndex = 12;
             // 
             // tbQuote
             // 
-            this.tbQuote.Location = new System.Drawing.Point(262, 71);
+            this.tbQuote.Location = new System.Drawing.Point(209, 51);
             this.tbQuote.Name = "tbQuote";
             this.tbQuote.Size = new System.Drawing.Size(190, 20);
             this.tbQuote.TabIndex = 13;
@@ -115,7 +115,7 @@
             // lblText
             // 
             this.lblText.AutoSize = true;
-            this.lblText.Location = new System.Drawing.Point(210, 154);
+            this.lblText.Location = new System.Drawing.Point(157, 134);
             this.lblText.Name = "lblText";
             this.lblText.Size = new System.Drawing.Size(31, 13);
             this.lblText.TabIndex = 7;
@@ -124,7 +124,7 @@
             // lblScripture
             // 
             this.lblScripture.AutoSize = true;
-            this.lblScripture.Location = new System.Drawing.Point(189, 117);
+            this.lblScripture.Location = new System.Drawing.Point(136, 97);
             this.lblScripture.Name = "lblScripture";
             this.lblScripture.Size = new System.Drawing.Size(52, 13);
             this.lblScripture.TabIndex = 8;
@@ -133,7 +133,7 @@
             // lblQuote
             // 
             this.lblQuote.AutoSize = true;
-            this.lblQuote.Location = new System.Drawing.Point(202, 78);
+            this.lblQuote.Location = new System.Drawing.Point(149, 58);
             this.lblQuote.Name = "lblQuote";
             this.lblQuote.Size = new System.Drawing.Size(39, 13);
             this.lblQuote.TabIndex = 9;
@@ -142,7 +142,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(208, 34);
+            this.lblDate.Location = new System.Drawing.Point(155, 14);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(33, 13);
             this.lblDate.TabIndex = 10;
@@ -154,7 +154,7 @@
             this.panelSide.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSide.Location = new System.Drawing.Point(0, 0);
             this.panelSide.Name = "panelSide";
-            this.panelSide.Size = new System.Drawing.Size(126, 502);
+            this.panelSide.Size = new System.Drawing.Size(126, 482);
             this.panelSide.TabIndex = 6;
             // 
             // lbDevotions
@@ -163,9 +163,9 @@
             this.lbDevotions.FormattingEnabled = true;
             this.lbDevotions.Location = new System.Drawing.Point(0, 0);
             this.lbDevotions.Name = "lbDevotions";
-            this.lbDevotions.Size = new System.Drawing.Size(126, 502);
+            this.lbDevotions.Size = new System.Drawing.Size(126, 482);
             this.lbDevotions.TabIndex = 0;
-            this.lbDevotions.SelectedIndexChanged += new System.EventHandler(this.lbPrevDev_SelectedIndexChanged);
+            this.lbDevotions.SelectedValueChanged += new System.EventHandler(this.lbDevotions_SelectedValueChanged);
             // 
             // Devotion
             // 
@@ -184,7 +184,8 @@
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.panelSide);
             this.Name = "Devotion";
-            this.Size = new System.Drawing.Size(771, 502);
+            this.Size = new System.Drawing.Size(690, 482);
+            this.Load += new System.EventHandler(this.Devotion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudYear)).EndInit();
             this.panelSide.ResumeLayout(false);
             this.ResumeLayout(false);

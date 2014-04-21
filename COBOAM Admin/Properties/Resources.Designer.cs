@@ -187,6 +187,15 @@ namespace COBOAM_Admin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the devotion for {0}/{1}?.
+        /// </summary>
+        public static string MB_Devotion_Delete {
+            get {
+                return ResourceManager.GetString("MB_Devotion_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Config file cannot be found. Would you like to create it now?.
         /// </summary>
         public static string MB_Show_Config {
