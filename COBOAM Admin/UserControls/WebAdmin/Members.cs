@@ -21,7 +21,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
         private bool _isFiltering;
         private bool _enabled;
         private bool _creating;
-        private Mail mail = new Mail();
+        private readonly Mail _mail = new Mail();
 
         public Members()
         {
@@ -52,7 +52,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             lbMembers.DataSource = _source;
             lbMembers.DisplayMember = "Text";
             lbMembers.ValueMember = "Value";
-            lbMembers.SelectedValue = prevSelected ?? 0;
+            lbMembers.SelectedValue = prevSelected ?? -1;
 
         }
         public void Members_Load(object sender = null, EventArgs e = null)
@@ -144,11 +144,6 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             {
                 MessageBox.Show("Please correct the email.", Resources.MB_Caption_Error);
             }
-            //if ((string)lbMembers.SelectedValue == "0" && tbUN.Text == String.Empty)
-            //{
-            //    MessageBox.Show("Please enter a username", Resources.MB_Caption_Error);
-            //}
-            Debug.Assert(lbMembers.SelectedValue != null, "lbMembers.SelectedValue != null");
             int value = Convert.ToInt32(((DBItem)lbMembers.SelectedItem).Value.ToString());
             string userName = tbUN.Text;
             string email = tbEmail.Text;
@@ -166,10 +161,10 @@ namespace COBOAM_Admin.UserControls.WebAdmin
                     query = Classes.MySql.GetQuery(QueryIndex.Members2, userName, password, email, name[0], name[1], level);
                     if (Program.MySql.ExecuteNonQuery(query) != 1) return;
                     query = Classes.MySql.GetQuery(QueryIndex.Logs3, 5, DateTime.Now.ToString(), Program.uCIP, Program.uName + " created " + userName + "\'s account.");
-                    mail.SendEmail(email, "Channel Of Blessings Registration", Resource.Format(Resources.New_Member_Email, tbName.Text, userName, "coboam"));
+                    _mail.SendEmail(email, "Channel Of Blessings Registration", Resource.Format(Resources.New_Member_Email, tbName.Text, userName, "coboam"));
                     if (Program.MySql.ExecuteNonQuery(query) == 1)
                     {
-                        MessageBox.Show(mail.Status
+                        MessageBox.Show(_mail.Status
                             ? Resource.Format(Resources.Member_Created + " Registration email sent.", userName)
                             : Resource.Format(Resources.Member_Created + " Registration email NOT sent.", userName));
                     }
@@ -261,18 +256,18 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         private void tbName_Validating(object sender, CancelEventArgs e)
         {
-            if (!_creating)
+            if (tbName.Text == string.Empty)
             {
-                if (tbName.Text == string.Empty)
-                {
-                    MessageBox.Show("Please enter a name.", Resources.MB_Caption_Error);
-                    return;
-                }
-                if (!tbName.Text.Contains(' '))
-                {
-                    MessageBox.Show("Please enter a first and last name.", Resources.MB_Caption_Error);
-                    return;
-                }
+                MessageBox.Show("Please enter a name.", Resources.MB_Caption_Error);
+                return;
+            }
+            if (!tbName.Text.Contains(' '))
+            {
+                MessageBox.Show("Please enter a first and last name.", Resources.MB_Caption_Error);
+                return;
+            }
+            if (!_creating)
+            { return;
             }
             string[] name = tbName.Text.Split(' ');
             var fName = name[0].ToCharArray();
