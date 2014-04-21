@@ -20,7 +20,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             if (cbMonth.Items.Count != 12)
             {
                 cbMonth.Items.AddRange(new object[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" });
-                nudYear.Minimum = DateTime.Now.Year;
+                nudYear.Minimum = 2000;
                 nudYear.Maximum = DateTime.Now.Year + 5;
             }
             _tuple = Program.MySql.ExecuteReader(Queries.ToString(QueryIndex.Devotion1));
