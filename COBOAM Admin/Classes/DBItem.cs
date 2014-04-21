@@ -1,14 +1,30 @@
-﻿namespace COBOAM_Admin.Classes
+﻿using System;
+using System.Collections;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
+namespace COBOAM_Admin.Classes
 {
+// ReSharper disable once InconsistentNaming
     public class DBItem
     {
-        public string Text {  get; set; }
-        public object Value { get; set; }
+        private readonly string _text;
+        private readonly object _value;
 
-        public override string ToString()
+        public DBItem(string text, object value)
         {
-            return Text;
+            _text = text;
+            _value = value;
         }
 
+
+        public string Text
+        {
+            get { return _text; }
+        }
+        public object Value
+        {
+            get { return _value; }
+        }
     }
 }

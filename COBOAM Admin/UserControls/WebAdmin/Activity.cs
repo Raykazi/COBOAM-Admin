@@ -69,21 +69,21 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             cbTypes.ValueMember = "Value";
             if (_list.Capacity == 0)
             {
-                cbi = new DBItem {Text = "All", Value = 0};
+                cbi = new DBItem ("All",0);
                 _list.Add(cbi);
-                cbi = new DBItem {Text = "Announcment", Value = 2};
+                cbi = new DBItem ("Announcment",2);
                 _list.Add(cbi);
-                cbi = new DBItem {Text = "Devotion", Value = 3};
+                cbi = new DBItem ("Devotion",3);
                 _list.Add(cbi);
-                cbi = new DBItem {Text = "Greetings", Value = 4};
+                cbi = new DBItem ("Greetings",4);
                 _list.Add(cbi);
-                cbi = new DBItem {Text = "Security", Value = 1};
+                cbi = new DBItem ("Security",1);
                 _list.Add(cbi);
-                cbi = new DBItem {Text = "Sermons", Value = 6};
+                cbi = new DBItem ("Sermons",6);
                 _list.Add(cbi);
-                cbi = new DBItem {Text = "Testimony", Value = 7};
+                cbi = new DBItem ("Testimony",7);
                 _list.Add(cbi);
-                cbi = new DBItem {Text = "Users", Value = 5};
+                cbi = new DBItem ("Users",5);
                 _list.Add(cbi);
             }
             cbTypes.DataSource = _list;

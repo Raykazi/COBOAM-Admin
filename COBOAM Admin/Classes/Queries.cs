@@ -1,4 +1,6 @@
-﻿namespace COBOAM_Admin.Classes
+﻿using System;
+
+namespace COBOAM_Admin.Classes
 {
     abstract class Queries
     {
@@ -7,17 +9,15 @@
             switch (queryIndex)
             {
                 case QueryIndex.Login1:
-                    return "SELECT COUNT(*) FROM `login` WHERE `Username` = '{0}' AND `Password2` = '{1}';";
-                case QueryIndex.Login2:
                     return "SELECT * FROM `login` WHERE `Username` = '{0}' AND `Password2` = '{1}';";
                 case QueryIndex.Devotion1:
                     return "SELECT * FROM `devotion` ORDER BY `ID` DESC;";
                 case QueryIndex.Logs1:
-                    return "SELECT * FROM coboam.log ORDER BY `ID` DESC";
+                    return "SELECT * FROM `log` ORDER BY `ID` DESC";
                 case QueryIndex.Logs2:
                     return "SELECT * FROM `log` WHERE `Type`='{0}' ORDER BY `ID` DESC";
                 case QueryIndex.Logs3:
-                    return "INSERT INTO `log`(`Type`,`Date`,`IP`,`Msg`) VALUES('{0}','{1}','{2}','{3}');";
+                    return "INSERT INTO `log`(`Type`,`Date`,`IP`,`Msg`) VALUES('{0}','" + DateTime.Now + "','" + Program.uCIP + "',\"{3}\");";
                 case QueryIndex.Devotion2:
                     return "INSERT INTO `devotion` (`Month`,`Year`,`Quote`,`Scripture`,`Text`) VALUES('{0}','{1}','{2}','{3}','{4}');";
                 case QueryIndex.Devotion3:
@@ -43,7 +43,17 @@
                 case QueryIndex.Announcement4:
                     return "DELETE FROM `announcement` WHERE `ID`='{0}'";
                 case QueryIndex.Members1:
-                    return "SELECT * FROM `login` ORDER BY `LName`";
+                    return "SELECT * FROM `login` WHERE `LName`<>\"\" ORDER BY `LName` ";
+                case QueryIndex.Members2:
+                    return "INSERT INTO `login` (`Username`,`Password`,`Email`,`FName`, `LName`, `Level`) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')";
+                case QueryIndex.Members3:
+                    return "UPDATE `login` SET `Username`='{0}', `Email`='{1}', `FName`='{2}', `LName`='{3}', `Level`='{4}' WHERE `ID`='{5}'";
+                case QueryIndex.Members4:
+                    return "UPDATE `login` SET `Disabled` = b'{1}' WHERE `ID`={0}";
+                case QueryIndex.Members5:
+                    return "SELECT COUNT(*) FROM `login` WHERE `Username` = '{0}';";
+                case QueryIndex.Members6:
+                    return "SELECT COUNT(*) FROM `login` WHERE `Email` = '{0}';";
             }
             return "";
         }
@@ -52,7 +62,6 @@
     public enum QueryIndex
     {
         Login1,
-        Login2,
         Logs1,
         Logs2,
         Logs3,
@@ -70,5 +79,10 @@
         Announcement3,
         Announcement4,
         Members1,
+        Members2,
+        Members3,
+        Members4,
+        Members5,
+        Members6
     }
 }

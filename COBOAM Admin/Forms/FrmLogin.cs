@@ -23,7 +23,7 @@ namespace COBOAM_Admin.Forms
             string lPW = tbPassword.Text.ToLower();
             lPW = Encryption.GetPassword(lPW, lUN);
 
-            if (HandleLogin(Classes.MySql.GetQuery(QueryIndex.Login2, lUN, lPW)) == 1)
+            if (HandleLogin(Classes.MySql.GetQuery(QueryIndex.Login1, lUN, lPW)) == 1)
             {
                 _splash.LoginStatus = true;
                 _splash.Status = @"Success. Welcome " + lUN + ".";
