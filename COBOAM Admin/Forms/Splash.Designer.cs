@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.PBar = new System.Windows.Forms.ProgressBar();
-            this.lblStatus = new System.Windows.Forms.Label();
             this.BWLoad = new System.ComponentModel.BackgroundWorker();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Timer
@@ -49,6 +49,14 @@
             this.PBar.Step = 0;
             this.PBar.TabIndex = 0;
             // 
+            // BWLoad
+            // 
+            this.BWLoad.WorkerReportsProgress = true;
+            this.BWLoad.WorkerSupportsCancellation = true;
+            this.BWLoad.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BWLoad_DoWork);
+            this.BWLoad.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BWLoad_ProgressChanged);
+            this.BWLoad.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BWLoad_RunWorkerCompleted);
+            // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
@@ -58,14 +66,6 @@
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 13);
             this.lblStatus.TabIndex = 1;
-            // 
-            // BWLoad
-            // 
-            this.BWLoad.WorkerReportsProgress = true;
-            this.BWLoad.WorkerSupportsCancellation = true;
-            this.BWLoad.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BWLoad_DoWork);
-            this.BWLoad.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BWLoad_ProgressChanged);
-            this.BWLoad.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BWLoad_RunWorkerCompleted);
             // 
             // Splash
             // 

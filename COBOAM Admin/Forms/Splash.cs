@@ -13,7 +13,7 @@ namespace COBOAM_Admin.Forms
         private readonly FrmLogin _frmLogin;
         private readonly FrmConfig _frmConfig;
         private XmlReader _reader;
-
+        private int _previous = 0;
         public Splash()
         {
             InitializeComponent();
@@ -70,47 +70,205 @@ namespace COBOAM_Admin.Forms
 
         private void BWLoad_DoWork(object sender, DoWorkEventArgs e)
         {
+            int[] settingCount = { 5, 4, 4 };
+            int elementCount = settingCount.Length;
+            int sectionPercent = ((PBar.Maximum / elementCount));
             while (_reader.Read())
             {
-                if (_reader.NodeType != XmlNodeType.Element || _reader.Name != "Database") continue;
-                Program.mUN = _reader.GetAttribute(0);
-                Program.mPW = _reader.GetAttribute(1);
-                Program.mHost = _reader.GetAttribute(2);
-                Program.mPort = _reader.GetAttribute(3);
-                Program.mDB = _reader.GetAttribute(4);
-                BWLoad.ReportProgress((PBar.Maximum / _reader.AttributeCount) * _reader.AttributeCount);
-                Thread.Sleep(100);
+
+                #region Database
+                if (_reader.Name == "Database")
+                {
+                    while (_reader.NodeType != XmlNodeType.EndElement)
+                    {
+                        _reader.Read();
+                        switch (_reader.Name)
+                        {
+                            case "Host":
+                                while (_reader.NodeType != XmlNodeType.EndElement)
+                                {
+                                    _reader.Read();
+                                    if (_reader.NodeType != XmlNodeType.Text) continue;
+                                    Program.mHost = _reader.Value;
+                                    BWLoad.ReportProgress((sectionPercent / settingCount[0]) * 1);
+                                }
+                                _reader.Read();
+                                break;
+                            case "Port":
+                                while (_reader.NodeType != XmlNodeType.EndElement)
+                                {
+                                    _reader.Read();
+                                    if (_reader.NodeType != XmlNodeType.Text) continue;
+                                    Program.mPort = _reader.Value;
+                                    BWLoad.ReportProgress((sectionPercent / settingCount[0]) * 1);
+                                }
+                                _reader.Read();
+                                break;
+                            case "DB":
+                                while (_reader.NodeType != XmlNodeType.EndElement)
+                                {
+                                    _reader.Read();
+                                    if (_reader.NodeType != XmlNodeType.Text) continue;
+                                    Program.mDB = _reader.Value;
+                                    BWLoad.ReportProgress((sectionPercent / settingCount[0]) * 1);
+                                }
+                                _reader.Read();
+                                break;
+                            case "Username":
+                                while (_reader.NodeType != XmlNodeType.EndElement)
+                                {
+                                    _reader.Read();
+                                    if (_reader.NodeType != XmlNodeType.Text) continue;
+                                    Program.mUN = _reader.Value;
+                                    BWLoad.ReportProgress((sectionPercent / settingCount[0]) * 1);
+                                }
+                                _reader.Read();
+                                break;
+                            case "Password":
+                                while (_reader.NodeType != XmlNodeType.EndElement)
+                                {
+                                    _reader.Read();
+                                    if (_reader.NodeType != XmlNodeType.Text) continue;
+                                    Program.mPW = _reader.Value;
+                                    BWLoad.ReportProgress((sectionPercent / settingCount[0]) * 1);
+                                }
+                                _reader.Read();
+                                break;
+                        }
+                    }
+                }
+                #endregion
+                #region FTP
+                if (_reader.Name == "FTP")
+                {
+                    while (_reader.NodeType != XmlNodeType.EndElement)
+                    {
+                        _reader.Read();
+                        if (_reader.Name == "Host")
+                        {
+                            while (_reader.NodeType != XmlNodeType.EndElement)
+                            {
+                                _reader.Read();
+                                if (_reader.NodeType != XmlNodeType.Text) continue;
+                                Program.fHost = _reader.Value;
+                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                            }
+                            _reader.Read();
+                        }
+                        if (_reader.Name == "Port")
+                        {
+                            while (_reader.NodeType != XmlNodeType.EndElement)
+                            {
+                                _reader.Read();
+                                if (_reader.NodeType != XmlNodeType.Text) continue;
+                                Program.fPort = Convert.ToInt32(_reader.Value);
+                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                            }
+                            _reader.Read();
+                        }
+                        if (_reader.Name == "Username")
+                        {
+                            while (_reader.NodeType != XmlNodeType.EndElement)
+                            {
+                                _reader.Read();
+                                if (_reader.NodeType != XmlNodeType.Text) continue;
+                                Program.fUN = _reader.Value;
+                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                            }
+                            _reader.Read();
+                        }
+                        if (_reader.Name == "Password")
+                        {
+                            while (_reader.NodeType != XmlNodeType.EndElement)
+                            {
+                                _reader.Read();
+                                if (_reader.NodeType != XmlNodeType.Text) continue;
+                                Program.fPW = _reader.Value;
+                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                            }
+                            _reader.Read();
+                        }
+                    }
+                }
+                #endregion
+                #region Email
+                if (_reader.Name == "Email")
+                {
+                    while (_reader.NodeType != XmlNodeType.EndElement)
+                    {
+                        _reader.Read();
+                        if (_reader.Name == "Host")
+                        {
+                            while (_reader.NodeType != XmlNodeType.EndElement)
+                            {
+                                _reader.Read();
+                                if (_reader.NodeType != XmlNodeType.Text) continue;
+                                Program.sHost = _reader.Value;
+                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                            }
+                            _reader.Read();
+                        }
+                        if (_reader.Name == "Port")
+                        {
+                            while (_reader.NodeType != XmlNodeType.EndElement)
+                            {
+                                _reader.Read();
+                                if (_reader.NodeType != XmlNodeType.Text) continue;
+                                Program.sPort = Convert.ToInt32(_reader.Value);
+                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                            }
+                            _reader.Read();
+                        }
+                        if (_reader.Name == "Username")
+                        {
+                            while (_reader.NodeType != XmlNodeType.EndElement)
+                            {
+                                _reader.Read();
+                                if (_reader.NodeType != XmlNodeType.Text) continue;
+                                Program.sUN = _reader.Value;
+                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                            }
+                            _reader.Read();
+                        }
+                        if (_reader.Name == "Password")
+                        {
+                            while (_reader.NodeType != XmlNodeType.EndElement)
+                            {
+                                _reader.Read();
+                                if (_reader.NodeType != XmlNodeType.Text) continue;
+                                Program.sPW = _reader.Value;
+                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                            }
+                            _reader.Read();
+                        }
+                    }
+                }
+                #endregion
             }
+            _reader.Close();
             Program.MySql = new Classes.MySql(Program.mHost, Program.mPort, Program.mDB, Program.mUN, Program.mPW);
         }
 
         private void BWLoad_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            if (PBar.Value >= 0 && PBar.Value < 21)
+            int min = PBar.Value;
+            int max = PBar.Value + e.ProgressPercentage;
+            do
             {
-                Status = @"Starting Up";
-            }
-            else if (PBar.Value > 20 && PBar.Value < 49)
-            {
-                Status = @"Loading Config";
-            }
-            PBar.Value = e.ProgressPercentage;
+                min = PBar.Value += 1;
+                Thread.Sleep(25);
+            } while (min != max);
+
         }
 
         private void BWLoad_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if ((e.Cancelled))
+            if (e.Error != null)
             {
-                lblStatus.Text = @"Cancelled!";
-            }
-            else if (e.Error != null)
-            {
-                lblStatus.Text = (@"Error: " + e.Error.Message);
+                Status = @"Error: " + e.Error.Message;
             }
             else
             {
-                PBar.Value = 100;
-                Status = @"Requesting User Login";
                 ShowLogin();
             }
         }

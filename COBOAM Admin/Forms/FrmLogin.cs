@@ -26,6 +26,7 @@ namespace COBOAM_Admin.Forms
             if (HandleLogin(Classes.MySql.GetQuery(QueryIndex.Login1, lUN, lPW)) == 1)
             {
                 _splash.LoginStatus = true;
+                _splash.PBar.Value += _splash.PBar.Maximum - _splash.PBar.Value;
                 _splash.Status = @"Success. Welcome " + lUN + ".";
                 Close();
             }
