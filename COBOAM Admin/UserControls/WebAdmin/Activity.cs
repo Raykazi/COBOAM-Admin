@@ -56,7 +56,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             for (int i = 0; i < rowCount; i++)
             {
                 if (rowCount == 0)
-                    rtbLogs.AppendText(Resource.Format(Resources.Activity_No_Logs, cbTypes.SelectedText));
+                    rtbLogs.AppendText(String.Format(Resources.Activity_No_Logs, cbTypes.SelectedText));
                 rtbLogs.AppendText(string.Format("{0}\t{1}\t{2}\r\n", logs[2][i], logs[3][i], logs[4][i]));
             }
             _tuple = null;
@@ -71,7 +71,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             {
                 cbi = new DBItem ("All",0);
                 _list.Add(cbi);
-                cbi = new DBItem ("Announcment",2);
+                cbi =  new DBItem ("Announcment",2);
                 _list.Add(cbi);
                 cbi = new DBItem ("Devotion",3);
                 _list.Add(cbi);

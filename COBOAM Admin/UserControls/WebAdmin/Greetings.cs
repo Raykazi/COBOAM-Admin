@@ -18,7 +18,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         public void Load()
         {
-            _tuple = Program.MySql.ExecuteReader(Queries.ToString(QueryIndex.Greetings1));
+            _tuple = Program.MySql.ExecuteReader(Queries.Value(QueryIndex.Greetings1));
             _greetingData = _tuple.Item1;
             int rowCount = _tuple.Item2;
             if (lbGreetings.Items.Count > 0)

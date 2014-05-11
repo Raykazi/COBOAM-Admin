@@ -66,7 +66,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dialogresult = MessageBox.Show(Resource.Format(Resources.MB_Announcements_Delete, tbTitle.Text), Resources.MB_Confirmation, MessageBoxButtons.YesNo);
+            DialogResult dialogresult = MessageBox.Show(String.Format(Resources.MB_Announcements_Delete, tbTitle.Text), Resources.MB_Confirmation, MessageBoxButtons.YesNo);
             if (dialogresult != DialogResult.Yes) return;
             string query = Classes.MySql.GetQuery(QueryIndex.Announcement4, _announcementData[0][lbAnnouncements.SelectedIndex-1]);
             var result = Program.MySql.ExecuteNonQuery(query);
@@ -100,7 +100,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         public void Announcements_Load(object sender = null, EventArgs e = null)
         {
-            _tuple = Program.MySql.ExecuteReader(Queries.ToString(QueryIndex.Announcement1));
+            _tuple = Program.MySql.ExecuteReader(Queries.Value(QueryIndex.Announcement1));
             _announcementData = _tuple.Item1;
             int rowCount = _tuple.Item2;
             if (lbAnnouncements.Items.Count > 0)

@@ -49,11 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Functions.cs" />
     <Compile Include="Classes\RegexUtilities.cs" />
     <Compile Include="Classes\Encryption.cs" />
     <Compile Include="Classes\Mail.cs" />
-    <Compile Include="Classes\Resource.cs" />
     <Compile Include="Classes\Logs.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MediaSalesControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,6 +114,18 @@
     <Compile Include="UserControls\WebAdmin\Members.Designer.cs">
       <DependentUpon>Members.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\WebAdmin\Newsletter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WebAdmin\Newsletter.Designer.cs">
+      <DependentUpon>Newsletter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WebAdmin\Sermons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WebAdmin\Sermons.Designer.cs">
+      <DependentUpon>Sermons.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UserControls\MediaSalesControl.resx">
       <DependentUpon>MediaSalesControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WebAdmin\Members.resx">
       <DependentUpon>Members.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WebAdmin\Newsletter.resx">
+      <DependentUpon>Newsletter.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Resources\New COBOAM.gif" />
     <Compile Include="Forms\FrmLogin.cs">
@@ -169,12 +189,8 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Forms\Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>
     </EmbeddedResource>

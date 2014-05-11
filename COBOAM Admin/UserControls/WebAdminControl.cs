@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using COBOAM_Admin.UserControls.WebAdmin;
 
 namespace COBOAM_Admin.UserControls
 {
@@ -8,15 +9,6 @@ namespace COBOAM_Admin.UserControls
         public WebAdminControl()
         {
             InitializeComponent();
-        }
-
-        private void WebAdminControl_Load(object sender, EventArgs e)
-        {
-            //LoadLogs();
-            //LoadAnnouncements();
-            //LoadDevotions();
-            //LoadGreetings();
-            
         }
 
         private void LoadLogs()
@@ -43,6 +35,16 @@ namespace COBOAM_Admin.UserControls
             Members.Members_Load();
         }
 
+        private void LoadNewsLetter()
+        {
+            Newsletter.Newsletter_Load();
+        }
+
+        private void LoadSermons()
+        {
+            
+        }
+
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControl.SelectedIndex)
@@ -62,12 +64,13 @@ namespace COBOAM_Admin.UserControls
                 case 4:
                     LoadMembers();
                     break;
+                case 5:
+                    LoadNewsLetter();
+                    break;
+                case 6:
+                    LoadSermons();
+                    break;
             }
-        }
-
-        private void tpGreetings_Click(object sender, EventArgs e)
-        {
-
         }
 
     }

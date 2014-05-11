@@ -199,4 +199,27 @@ If you have any issues, please contact webmaster@channelofblessings.com or conta
   <data name="MB_Devotion_Delete" xml:space="preserve">
     <value>Are you sure you want to delete the devotion for {0}/{1}?</value>
   </data>
+  <data name="Newsletter_Saved" xml:space="preserve">
+    <value>Newsletter {0} {1} was saved.</value>
+  </data>
+  <data name="Newsletter_Uploaded" xml:space="preserve">
+    <value>{0} uploaded to web server.</value>
+  </data>
+  <data name="Newsletter_Email" xml:space="preserve">
+    <value>Dear Reader:&lt;br&gt;
+We appreciate you being an avid reader of our quarterly publication "The Trumpet".  It is truly rewarding to get feedbacks from you as we strive to make our newsletter more informative and interesting.&lt;br&gt;
+We invite you to be more involved in this effort by sharing your opinions, comments, suggestions, personal experiences, testimonies and photos with us to be featured in one of our upcoming publications.&lt;br&gt;
+Again, thanks for being such engaged readers and we look forward for your continued support.&lt;br&gt;
+&lt;br&gt;
+
+Link to our newsletter page:&lt;br&gt;
+&lt;a href="http://www.channelofblessings.com/?do=newsletter" target="_blank"&gt;Newsletter Page&lt;/a&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+God Bless,&lt;br&gt;
+E.W. Edwards&lt;br&gt;
+Need an inspiring word, visit&lt;br&gt;
+&lt;a href="channelofblessings.com" target="_blank"&gt;Channel Of Blessings Website&lt;/a&gt;</value>
+  </data>
 </root>

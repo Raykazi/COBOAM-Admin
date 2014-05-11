@@ -58,7 +58,7 @@ namespace COBOAM_Admin.Classes
 
         internal static string GetQuery(QueryIndex qi, params object[] args)
         {
-            string query = Queries.ToString(qi);
+            string query = Queries.Value(qi);
             if (args.Length <= 0) return query;
             query = string.Format(query, args);
             return query;

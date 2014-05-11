@@ -21,7 +21,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
         private bool _isFiltering;
         private bool _enabled;
         private bool _creating;
-        private readonly Mail _mail = new Mail();
+        private Email _email;
 
         public Members()
         {
@@ -32,7 +32,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         private void DbLoad(object prevSelected = null)
         {
-            _tuple = Program.MySql.ExecuteReader(Queries.ToString(QueryIndex.Members1));
+            _tuple = Program.MySql.ExecuteReader(Queries.Value(QueryIndex.Members1));
             _dbData = _tuple.Item1;
             rowCount = _tuple.Item2;
             if (_source.Count > 0)
@@ -66,7 +66,6 @@ namespace COBOAM_Admin.UserControls.WebAdmin
                 new DBItem("Managers",4),
                 new DBItem("Admin",5),
                 new DBItem("Sys Admin",6),
-
             };
             cbAL.DataSource = privelegeList;
             cbAL.DisplayMember = "Text";
@@ -161,12 +160,13 @@ namespace COBOAM_Admin.UserControls.WebAdmin
                     query = Classes.MySql.GetQuery(QueryIndex.Members2, userName, password, email, name[0], name[1], level);
                     if (Program.MySql.ExecuteNonQuery(query) != 1) return;
                     query = Classes.MySql.GetQuery(QueryIndex.Logs3, 5, DateTime.Now.ToString(), Program.uCIP, Program.uName + " created " + userName + "\'s account.");
-                    _mail.SendEmail(email, "Channel Of Blessings Registration", Resource.Format(Resources.New_Member_Email, tbName.Text, userName, "coboam"));
+                    _email = new Email(email, "Channel Of Blessings Registration", String.Format(Resources.New_Member_Email, tbName.Text, userName, "coboam"));
+                    _email.Send();
                     if (Program.MySql.ExecuteNonQuery(query) == 1)
                     {
-                        MessageBox.Show(_mail.Status
-                            ? Resource.Format(Resources.Member_Created + " Registration email sent.", userName)
-                            : Resource.Format(Resources.Member_Created + " Registration email NOT sent.", userName));
+                        MessageBox.Show(_email.Status
+                            ? String.Format(Resources.Member_Created + " Registration email sent.", userName)
+                            : String.Format(Resources.Member_Created + " Registration email NOT sent.", userName));
                     }
                     break;
 
@@ -177,7 +177,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
                     if (Program.MySql.ExecuteNonQuery(query) == 1)
                     {
-                        MessageBox.Show(Resource.Format(Resources.Member_Updated, userName));
+                        MessageBox.Show(String.Format(Resources.Member_Updated, userName));
                     }
                     break;
 
@@ -223,7 +223,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             if (Program.MySql.ExecuteNonQuery(query) != 1) return;
             query = Classes.MySql.GetQuery(QueryIndex.Logs3, 5, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has " + text + " " + userName + "\'s account.");
             if (Program.MySql.ExecuteNonQuery(query) != 1) return;
-            MessageBox.Show(Resource.Format(Resources.Member_SC, tbUN.Text, text));
+            MessageBox.Show(String.Format(Resources.Member_SC, tbUN.Text, text));
             DbLoad(lbMembers.SelectedValue);
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Web;
 using System.Windows.Forms;
 using COBOAM_Admin.Forms;
 
@@ -14,12 +15,26 @@ namespace COBOAM_Admin.Classes
         public static bool ConfigExist;
         public static MySql MySql;
 
-        #region DB Connection Variables
+        #region MySQL Database Info
         public static string mUN = "";
         public static string mPW;
         public static string mDB;
         public static string mHost;
         public static string mPort;
+        #endregion
+
+        #region FTP Info
+        public static string fHost;
+        public static int fPort;
+        public static string fUN;
+        public static string fPW;
+        #endregion
+
+        #region SMTP Info
+        public static string sHost;
+        public static int sPort;
+        public static string sUN;
+        public static string sPW;
         #endregion
 
         public static string uName = string.Empty;

@@ -9,7 +9,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 {
     public partial class Devotion : UserControl
     {
-        Tuple<List<string>[], int> _tuple;
+        Tuple<List<string>[], int> _tuple = new Tuple<List<string>[], int>(null, -1);
         List<string>[] _dbData;
         private readonly BindingSource _source = new BindingSource();
         public Devotion()
@@ -20,7 +20,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         private void DbLoad()
         {
-            _tuple = Program.MySql.ExecuteReader(Queries.ToString(QueryIndex.Devotion1));
+            _tuple = Program.MySql.ExecuteReader(Queries.Value(QueryIndex.Devotion1));
             _dbData = _tuple.Item1;
             int rowCount = _tuple.Item2;
             if (_source.Count > 0)
@@ -100,7 +100,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
                 result = Program.MySql.ExecuteNonQuery(query);
                 if (result == 1)
                 {
-                    MessageBox.Show(Resource.Format(Resources.Devotion_Added, month, year));
+                    MessageBox.Show(String.Format(Resources.Devotion_Added, month, year));
                 }
             }
             else
@@ -114,7 +114,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
                 result = Program.MySql.ExecuteNonQuery(query);
                 if (result == 1)
                 {
-                    MessageBox.Show(Resource.Format(Resources.Devotion_Updated, month, year));
+                    MessageBox.Show(String.Format(Resources.Devotion_Updated, month, year));
                 }
             }
 
@@ -122,7 +122,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dialogresult = MessageBox.Show(Resource.Format(Resources.MB_Devotion_Delete, ((DBItem)cbMonth.SelectedItem).Text, nudYear.Value), Resources.MB_Confirmation, MessageBoxButtons.YesNo);
+            DialogResult dialogresult = MessageBox.Show(String.Format(Resources.MB_Devotion_Delete, ((DBItem)cbMonth.SelectedItem).Text, nudYear.Value), Resources.MB_Confirmation, MessageBoxButtons.YesNo);
             if (dialogresult != DialogResult.Yes) return;
             int month = Convert.ToInt32(((DBItem)lbDevotions.SelectedValue).Value);
             int year = (int)nudYear.Value;
@@ -133,7 +133,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             result = Program.MySql.ExecuteNonQuery(query);
             if (result != 1) return;
             Devotion_Load();
-            MessageBox.Show(Resource.Format(Resources.Devotion_Deleted, month, year));
+            MessageBox.Show(String.Format(Resources.Devotion_Deleted, month, year));
         }
 
         private void lbDevotions_SelectedValueChanged(object sender, EventArgs e)
