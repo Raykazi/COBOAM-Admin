@@ -52,15 +52,14 @@ namespace COBOAM_Admin.Forms
 
         private int HandleLogin(string query)
         {
-            Tuple<List<string>[], int> tuple = Program.MySql.ExecuteReader(query);
-            if (tuple == null) return -1;
-            List<string>[] userInfo = tuple.Item1;
-            int loginResult = tuple.Item2;
+            List<string>[] userInfo = Program.MySql.ExecuteReader(query);
+            //if (tuple == null) return -1;
+            int loginResult = userInfo[0].Count;
             string ipAddress;
             if (loginResult != 1) return loginResult;
             Program.uName = userInfo[1][0];
             Program.uLvl = Convert.ToInt32(userInfo[4][0]);
-            Program.uFName = string.Concat(userInfo[5][0]," ",userInfo[6][0]);
+            Program.uFName = string.Concat(userInfo[5][0], " ", userInfo[6][0]);
             Program.uEmail = userInfo[7][0];
             Program.uLIP = userInfo[10][0];
             using (WebClient wc = new WebClient())

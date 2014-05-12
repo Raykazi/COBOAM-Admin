@@ -9,8 +9,8 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 {
     public partial class Announcements : UserControl
     {
-        Tuple<List<string>[], int> _tuple = new Tuple<List<string>[], int>(null,-1);
-        List<string>[] _announcementData;
+        Tuple<List<string>[], int> _tuple = new Tuple<List<string>[], int>(null, -1);
+        List<string>[] _dbData;
         private readonly DateTime _cDate = DateTime.Now;
         public Announcements()
         {
@@ -40,7 +40,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             {
                 query = Classes.MySql.GetQuery(QueryIndex.Announcement2, title, text, Start, End);
                 result = Program.MySql.ExecuteNonQuery(query);
-                if(result != 1) return;
+                if (result != 1) return;
                 query = Classes.MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has created the Announcement for \"" + title + "\".");
                 result = Program.MySql.ExecuteNonQuery(query);
                 if (result == 1)
@@ -51,7 +51,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             else
             {
                 index -= 1;
-                int ID = Convert.ToInt32(_announcementData[0][index]);
+                int ID = Convert.ToInt32(_dbData[0][index]);
                 query = Classes.MySql.GetQuery(QueryIndex.Announcement3, title, text, Start, End, ID);
                 result = Program.MySql.ExecuteNonQuery(query);
                 if (result != 1) return;
@@ -68,7 +68,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
         {
             DialogResult dialogresult = MessageBox.Show(String.Format(Resources.MB_Announcements_Delete, tbTitle.Text), Resources.MB_Confirmation, MessageBoxButtons.YesNo);
             if (dialogresult != DialogResult.Yes) return;
-            string query = Classes.MySql.GetQuery(QueryIndex.Announcement4, _announcementData[0][lbAnnouncements.SelectedIndex-1]);
+            string query = Classes.MySql.GetQuery(QueryIndex.Announcement4, _dbData[0][lbAnnouncements.SelectedIndex - 1]);
             var result = Program.MySql.ExecuteNonQuery(query);
             if (result == -1) return;
             query = Classes.MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has deleted the Announcement for  \"" + tbTitle + "\".");
@@ -90,31 +90,30 @@ namespace COBOAM_Admin.UserControls.WebAdmin
                     break;
                 default:
                     index -= 1;
-                    tbTitle.Text = HttpUtility.HtmlDecode(_announcementData[2][index]);
-                    tbText.Text = HttpUtility.HtmlDecode(_announcementData[3][index]);
-                    dtpStart.Value = DateTime.Parse(_announcementData[4][index]);
-                    dtpStop.Value = DateTime.Parse(_announcementData[5][index]);
+                    tbTitle.Text = HttpUtility.HtmlDecode(_dbData[2][index]);
+                    tbText.Text = HttpUtility.HtmlDecode(_dbData[3][index]);
+                    dtpStart.Value = DateTime.Parse(_dbData[4][index]);
+                    dtpStop.Value = DateTime.Parse(_dbData[5][index]);
                     break;
             }
         }
 
         public void Announcements_Load(object sender = null, EventArgs e = null)
         {
-            _tuple = Program.MySql.ExecuteReader(Queries.Value(QueryIndex.Announcement1));
-            _announcementData = _tuple.Item1;
-            int rowCount = _tuple.Item2;
+            _dbData = Program.MySql.ExecuteReader(Queries.Value(QueryIndex.Announcement1));
+
             if (lbAnnouncements.Items.Count > 0)
             {
                 lbAnnouncements.Items.Clear();
             }
             lbAnnouncements.Items.Add(Resources.LB_Create_New);
-            for (int i = 0; i < rowCount; i++)
+            for (int i = 0; i < _dbData[0].Count; i++)
             {
-                DateTime dbEDate = DateTime.Parse(_announcementData[5][i]);
+                DateTime dbEDate = DateTime.Parse(_dbData[5][i]);
                 if (_cDate > dbEDate)
-                    lbAnnouncements.Items.Add("(*) " + _announcementData[2][i]);
+                    lbAnnouncements.Items.Add("(*) " + _dbData[2][i]);
                 else
-                    lbAnnouncements.Items.Add(_announcementData[2][i]);
+                    lbAnnouncements.Items.Add(_dbData[2][i]);
             }
 
         }

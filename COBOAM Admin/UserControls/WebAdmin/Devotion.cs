@@ -9,7 +9,6 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 {
     public partial class Devotion : UserControl
     {
-        Tuple<List<string>[], int> _tuple = new Tuple<List<string>[], int>(null, -1);
         List<string>[] _dbData;
         private readonly BindingSource _source = new BindingSource();
         public Devotion()
@@ -20,16 +19,14 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         private void DbLoad()
         {
-            _tuple = Program.MySql.ExecuteReader(Queries.Value(QueryIndex.Devotion1));
-            _dbData = _tuple.Item1;
-            int rowCount = _tuple.Item2;
+            _dbData = Program.MySql.ExecuteReader(Queries.Value(QueryIndex.Devotion1));
             if (_source.Count > 0)
             {
                 _source.Clear();
                 lbDevotions.DataSource = _source;
             }
             _source.Add(new DBItem(Resources.LB_Create_New, -1));
-            for (int i = 0; i < rowCount; i++)
+            for (int i = 0; i < _dbData[0].Count; i++)
             {
                 if (_dbData[1][i].Length == 1)
                     _dbData[1][i] = _dbData[1][i].Insert(0, "0");

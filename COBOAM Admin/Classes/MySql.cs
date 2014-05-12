@@ -64,9 +64,8 @@ namespace COBOAM_Admin.Classes
             return query;
         }
 
-        internal Tuple<List<string>[], int> ExecuteReader(string query)
+        internal List<string>[] ExecuteReader(string query)
         {
-            int rowCount = 0;
             if (!OpenConnection()) return null;
             _mCmd = new MySqlCommand(query, _connection);
             MySqlDataReader mReader = _mCmd.ExecuteReader();
@@ -81,11 +80,10 @@ namespace COBOAM_Admin.Classes
             {
                 for (int i = 0; i < (list.Length); i++)
                     list[i].Add(mReader[i].ToString());
-                rowCount++;
             }
             mReader.Close();
             CloseConnection();
-            return Tuple.Create(list, rowCount);
+            return list;
         }
 
         internal object ExecuteScalar(string query)

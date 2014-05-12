@@ -13,9 +13,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 {
     public partial class Members : UserControl
     {
-        private Tuple<List<string>[], int> _tuple;
         private List<string>[] _dbData;
-        private int rowCount = 0;
         private readonly BindingSource _source = new BindingSource();
         private readonly BindingSource _fSource = new BindingSource();
         private bool _isFiltering;
@@ -32,9 +30,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         private void DbLoad(object prevSelected = null)
         {
-            _tuple = Program.MySql.ExecuteReader(Queries.Value(QueryIndex.Members1));
-            _dbData = _tuple.Item1;
-            rowCount = _tuple.Item2;
+            _dbData = Program.MySql.ExecuteReader(Queries.Value(QueryIndex.Members1));
             if (_source.Count > 0)
             {
                 _source.Clear();
@@ -43,7 +39,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
             }
             _source.Add(new DBItem(Resources.LB_Create_New, -1));
-            for (int i = 0; i < rowCount; i++)
+            for (int i = 0; i < _dbData[0].Count; i++)
             {
                 string name = string.Format("{0} {1}", _dbData[6][i], _dbData[5][i]);
                 _source.Add(new DBItem(name, _dbData[0][i]));

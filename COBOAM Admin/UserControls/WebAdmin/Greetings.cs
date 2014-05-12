@@ -18,15 +18,14 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         public void Load()
         {
-            _tuple = Program.MySql.ExecuteReader(Queries.Value(QueryIndex.Greetings1));
-            _greetingData = _tuple.Item1;
-            int rowCount = _tuple.Item2;
+            _greetingData  = Program.MySql.ExecuteReader(Queries.Value(QueryIndex.Greetings1));
+            
             if (lbGreetings.Items.Count > 0)
             {
                 lbGreetings.Items.Clear();
             }
             lbGreetings.Items.Add(Resources.LB_Create_New);
-            for (int i = 0; i < rowCount; i++)
+            for (int i = 0; i < _greetingData[0].Count; i++)
             {
                 lbGreetings.Items.Add(_greetingData[2][i]);
             }
