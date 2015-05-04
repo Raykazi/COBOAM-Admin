@@ -13,7 +13,7 @@ namespace COBOAM_Admin.Forms
         private readonly FrmLogin _frmLogin;
         private readonly FrmConfig _frmConfig;
         private XmlReader _reader;
-        private int _previous = 0;
+
         public Splash()
         {
             InitializeComponent();
@@ -70,7 +70,8 @@ namespace COBOAM_Admin.Forms
 
         private void BWLoad_DoWork(object sender, DoWorkEventArgs e)
         {
-            int[] settingCount = { 5, 4, 4 };
+            int i = 0;
+            int[] settingCount = { 5, 4, 4 ,3};
             int elementCount = settingCount.Length;
             int sectionPercent = ((PBar.Maximum / elementCount));
             while (_reader.Read())
@@ -90,7 +91,7 @@ namespace COBOAM_Admin.Forms
                                     _reader.Read();
                                     if (_reader.NodeType != XmlNodeType.Text) continue;
                                     Program.mHost = _reader.Value;
-                                    BWLoad.ReportProgress((sectionPercent / settingCount[0]) * 1);
+                                    BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
                                 }
                                 _reader.Read();
                                 break;
@@ -100,7 +101,7 @@ namespace COBOAM_Admin.Forms
                                     _reader.Read();
                                     if (_reader.NodeType != XmlNodeType.Text) continue;
                                     Program.mPort = _reader.Value;
-                                    BWLoad.ReportProgress((sectionPercent / settingCount[0]) * 1);
+                                    BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
                                 }
                                 _reader.Read();
                                 break;
@@ -110,7 +111,7 @@ namespace COBOAM_Admin.Forms
                                     _reader.Read();
                                     if (_reader.NodeType != XmlNodeType.Text) continue;
                                     Program.mDB = _reader.Value;
-                                    BWLoad.ReportProgress((sectionPercent / settingCount[0]) * 1);
+                                    BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
                                 }
                                 _reader.Read();
                                 break;
@@ -120,7 +121,7 @@ namespace COBOAM_Admin.Forms
                                     _reader.Read();
                                     if (_reader.NodeType != XmlNodeType.Text) continue;
                                     Program.mUN = _reader.Value;
-                                    BWLoad.ReportProgress((sectionPercent / settingCount[0]) * 1);
+                                    BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
                                 }
                                 _reader.Read();
                                 break;
@@ -130,7 +131,7 @@ namespace COBOAM_Admin.Forms
                                     _reader.Read();
                                     if (_reader.NodeType != XmlNodeType.Text) continue;
                                     Program.mPW = _reader.Value;
-                                    BWLoad.ReportProgress((sectionPercent / settingCount[0]) * 1);
+                                    BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
                                 }
                                 _reader.Read();
                                 break;
@@ -141,6 +142,7 @@ namespace COBOAM_Admin.Forms
                 #region FTP
                 if (_reader.Name == "FTP")
                 {
+                    i++;
                     while (_reader.NodeType != XmlNodeType.EndElement)
                     {
                         _reader.Read();
@@ -151,7 +153,7 @@ namespace COBOAM_Admin.Forms
                                 _reader.Read();
                                 if (_reader.NodeType != XmlNodeType.Text) continue;
                                 Program.fHost = _reader.Value;
-                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                                BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
                             }
                             _reader.Read();
                         }
@@ -162,7 +164,7 @@ namespace COBOAM_Admin.Forms
                                 _reader.Read();
                                 if (_reader.NodeType != XmlNodeType.Text) continue;
                                 Program.fPort = Convert.ToInt32(_reader.Value);
-                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                                BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
                             }
                             _reader.Read();
                         }
@@ -173,7 +175,7 @@ namespace COBOAM_Admin.Forms
                                 _reader.Read();
                                 if (_reader.NodeType != XmlNodeType.Text) continue;
                                 Program.fUN = _reader.Value;
-                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                                BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
                             }
                             _reader.Read();
                         }
@@ -184,7 +186,7 @@ namespace COBOAM_Admin.Forms
                                 _reader.Read();
                                 if (_reader.NodeType != XmlNodeType.Text) continue;
                                 Program.fPW = _reader.Value;
-                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                                BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
                             }
                             _reader.Read();
                         }
@@ -194,6 +196,7 @@ namespace COBOAM_Admin.Forms
                 #region Email
                 if (_reader.Name == "Email")
                 {
+                    i++;
                     while (_reader.NodeType != XmlNodeType.EndElement)
                     {
                         _reader.Read();
@@ -204,7 +207,7 @@ namespace COBOAM_Admin.Forms
                                 _reader.Read();
                                 if (_reader.NodeType != XmlNodeType.Text) continue;
                                 Program.sHost = _reader.Value;
-                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                                BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
                             }
                             _reader.Read();
                         }
@@ -215,7 +218,7 @@ namespace COBOAM_Admin.Forms
                                 _reader.Read();
                                 if (_reader.NodeType != XmlNodeType.Text) continue;
                                 Program.sPort = Convert.ToInt32(_reader.Value);
-                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                                BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
                             }
                             _reader.Read();
                         }
@@ -226,7 +229,7 @@ namespace COBOAM_Admin.Forms
                                 _reader.Read();
                                 if (_reader.NodeType != XmlNodeType.Text) continue;
                                 Program.sUN = _reader.Value;
-                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                                BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
                             }
                             _reader.Read();
                         }
@@ -237,7 +240,50 @@ namespace COBOAM_Admin.Forms
                                 _reader.Read();
                                 if (_reader.NodeType != XmlNodeType.Text) continue;
                                 Program.sPW = _reader.Value;
-                                BWLoad.ReportProgress((sectionPercent / settingCount[1]) * 1);
+                                BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
+                            }
+                            _reader.Read();
+                        }
+                    }
+                }
+                #endregion
+                #region Autolog
+                if (_reader.Name == "AutoLogin")
+                {
+                    i++;
+                    while (_reader.NodeType != XmlNodeType.EndElement)
+                    {
+                        _reader.Read();
+                        if (_reader.Name == "Enabled")
+                        {
+                            while (_reader.NodeType != XmlNodeType.EndElement)
+                            {
+                                _reader.Read();
+                                if (_reader.NodeType != XmlNodeType.Text) continue;
+                                Program.aLE = Convert.ToInt32(_reader.Value);
+                                BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
+                            }
+                            _reader.Read();
+                        }
+                        if (_reader.Name == "Username")
+                        {
+                            while (_reader.NodeType != XmlNodeType.EndElement)
+                            {
+                                _reader.Read();
+                                if (_reader.NodeType != XmlNodeType.Text) continue;
+                                Program.aUN = _reader.Value;
+                                BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
+                            }
+                            _reader.Read();
+                        }
+                        if (_reader.Name == "Password")
+                        {
+                            while (_reader.NodeType != XmlNodeType.EndElement)
+                            {
+                                _reader.Read();
+                                if (_reader.NodeType != XmlNodeType.Text) continue;
+                                Program.aPW = _reader.Value;
+                                BWLoad.ReportProgress((sectionPercent / settingCount[i]) * 1);
                             }
                             _reader.Read();
                         }

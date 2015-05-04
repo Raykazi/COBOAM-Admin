@@ -3,6 +3,7 @@ using System.IO;
 using System.Web;
 using System.Windows.Forms;
 using COBOAM_Admin.Forms;
+using COBOAM_Admin.Properties;
 
 namespace COBOAM_Admin.Classes
 {
@@ -43,9 +44,18 @@ namespace COBOAM_Admin.Classes
         public static string uLIP = string.Empty;
         public static string uCIP = string.Empty;
         public static int uLvl;
+
+        #region Auto Login
+        public static int aLE;
+        public static string aUN;
+        public static string aPW;
+        #endregion
+
+
         [STAThread]
         static void Main()
         {
+            //Settings.Default.coboamConnectionString += "Password: lolblackppl23";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             if (File.Exists(Application.StartupPath + "\\" + CFileName))
