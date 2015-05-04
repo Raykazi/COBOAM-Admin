@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Runtime.Caching;
 using COBOAM_Admin.UserControls.WebAdmin;
 
 namespace COBOAM_Admin.UserControls
 {
-    public partial class WebAdminControl : UserControl
+    public partial class WebAdminControl : TUserControl
     {
         public WebAdminControl()
         {
@@ -23,7 +24,7 @@ namespace COBOAM_Admin.UserControls
 
         private void LoadGreetings()
         {
-            Greetings.Load();
+            Greetings.LoadGreeting();
         }
         private void LoadAnnouncements()
         {
@@ -42,7 +43,7 @@ namespace COBOAM_Admin.UserControls
 
         private void LoadSermons()
         {
-            
+
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)

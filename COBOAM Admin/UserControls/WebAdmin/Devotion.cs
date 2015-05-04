@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Caching;
 using System.Windows.Forms;
 using System.Web;
 using COBOAM_Admin.Classes;
@@ -10,7 +11,10 @@ namespace COBOAM_Admin.UserControls.WebAdmin
     public partial class Devotion : UserControl
     {
         List<string>[] _dbData;
+        private MemoryCache _dCache;
         private readonly BindingSource _source = new BindingSource();
+        private bool _refreshCache;
+
         public Devotion()
         {
             InitializeComponent();
@@ -19,13 +23,14 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         private void DbLoad()
         {
-            _dbData = Program.MySql.ExecuteReader(Queries.Value(QueryIndex.Devotion1));
+            _dbData = Program.MySql.ExecuteReader(QueryIndex.Devotion1);
             if (_source.Count > 0)
             {
                 _source.Clear();
                 lbDevotions.DataSource = _source;
             }
-            _source.Add(new DBItem(Resources.LB_Create_New, -1));
+                _source.Add(new DBItem(Resources.LB_Create_New, -1));
+
             for (int i = 0; i < _dbData[0].Count; i++)
             {
                 if (_dbData[1][i].Length == 1)
@@ -82,7 +87,6 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             }
             int index = Convert.ToInt32(((DBItem)lbDevotions.SelectedItem).Value.ToString());
             int result;
-            string query;
             int month = Convert.ToInt32(((DBItem)cbMonth.SelectedItem).Value.ToString());
             int year = (int)nudYear.Value;
             string quote = HttpUtility.HtmlEncode(tbQuote.Text);
@@ -90,11 +94,9 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             string text = HttpUtility.HtmlEncode(tbText.Text);
             if (index == -1)
             {
-                query = Classes.MySql.GetQuery(QueryIndex.Devotion2, month, year, quote, scripture, text);
-                result = Program.MySql.ExecuteNonQuery(query);
+                result = Program.MySql.ExecuteNonQuery(QueryIndex.Devotion2, month, year, quote, scripture, text);
                 if (result != 1) return;
-                query = Classes.MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has created the Devotion for " + month + "/" + year + ".");
-                result = Program.MySql.ExecuteNonQuery(query);
+                result = Program.MySql.ExecuteNonQuery(QueryIndex.Logs3, 3, Program.uName + " has created the Devotion for " + month + "/" + year + ".");
                 if (result == 1)
                 {
                     MessageBox.Show(String.Format(Resources.Devotion_Added, month, year));
@@ -104,16 +106,16 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             {
                 index -= 1;
                 int ID = Convert.ToInt32(_dbData[0][index]);
-                query = Classes.MySql.GetQuery(QueryIndex.Devotion3, ID, quote, scripture, text, month, year);
-                result = Program.MySql.ExecuteNonQuery(query);
+                result = Program.MySql.ExecuteNonQuery(QueryIndex.Devotion3, ID, quote, scripture, text, month, year);
                 if (result != 1) return;
-                query = Classes.MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has updated the Devotion for " + month + "/" + year + ".");
-                result = Program.MySql.ExecuteNonQuery(query);
+                result = Program.MySql.ExecuteNonQuery(QueryIndex.Logs3, 3, Program.uName + " has updated the Devotion for " + month + "/" + year + ".");
                 if (result == 1)
                 {
                     MessageBox.Show(String.Format(Resources.Devotion_Updated, month, year));
                 }
             }
+            _refreshCache = true;
+            Devotion_Load();
 
         }
 
@@ -123,12 +125,11 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             if (dialogresult != DialogResult.Yes) return;
             int month = Convert.ToInt32(((DBItem)lbDevotions.SelectedValue).Value);
             int year = (int)nudYear.Value;
-            string query = Classes.MySql.GetQuery(QueryIndex.Devotion4, month, year);
-            var result = Program.MySql.ExecuteNonQuery(query);
-            query = Classes.MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has deleted the Devotion for " + month + "/" + year + ".");
+            var result = Program.MySql.ExecuteNonQuery(QueryIndex.Devotion4, month, year);
             if (result == -1) return;
-            result = Program.MySql.ExecuteNonQuery(query);
+            result = Program.MySql.ExecuteNonQuery(QueryIndex.Logs3, 3, Program.uName + " has deleted the Devotion for " + month + "/" + year + ".");
             if (result != 1) return;
+            _refreshCache = true;
             Devotion_Load();
             MessageBox.Show(String.Format(Resources.Devotion_Deleted, month, year));
         }

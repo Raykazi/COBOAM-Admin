@@ -5,5 +5,21 @@
     <Setting Name="Setting" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="coboamConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;server=54.186.141.2;user id=raykazi;persistsecurityinfo=True;database=coboam;allowzerodatetime=True;allowuservariables=True;convertzerodatetime=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server=54.186.141.2;user id=raykazi;persistsecurityinfo=True;database=coboam;allowzerodatetime=True;allowuservariables=True;convertzerodatetime=True</Value>
+    </Setting>
+    <Setting Name="coboamConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;server=50.192.51.66;user id=cobuser;persistsecurityinfo=True;database=coboam;allowbatch=True;allowzerodatetime=True;allowuservariables=True;useusageadvisor=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server=50.192.51.66;user id=cobuser;persistsecurityinfo=True;database=coboam;allowbatch=True;allowzerodatetime=True;allowuservariables=True;useusageadvisor=True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

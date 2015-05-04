@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Caching;
 using System.Web;
 using System.Windows.Forms;
 using COBOAM_Admin.Classes;
@@ -9,25 +10,37 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 {
     public partial class Greetings : UserControl
     {
-        Tuple<List<string>[], int> _tuple;
-        List<string>[] _greetingData;
+        List<string>[] _dbData;
+        private MemoryCache _cache;
+        private bool _refreshCache;
         public Greetings()
         {
             InitializeComponent();
         }
 
-        public void Load()
+        public void LoadGreeting()
         {
-            _greetingData  = Program.MySql.ExecuteReader(Queries.Value(QueryIndex.Greetings1));
-            
-            if (lbGreetings.Items.Count > 0)
+            if (_cache != null && !_refreshCache)
             {
-                lbGreetings.Items.Clear();
+                _dbData = _cache.Get("Greetings") as List<string>[];
             }
-            lbGreetings.Items.Add(Resources.LB_Create_New);
-            for (int i = 0; i < _greetingData[0].Count; i++)
+            else
             {
-                lbGreetings.Items.Add(_greetingData[2][i]);
+                _dbData = Program.MySql.ExecuteReader(QueryIndex.Greetings1);
+                _refreshCache = false;
+                if (lbGreetings.Items.Count > 0)
+                {
+                    lbGreetings.Items.Clear();
+                }
+                lbGreetings.Items.Add(Resources.LB_Create_New);
+                for (int i = 0; i < _dbData[0].Count; i++)
+                {
+                    lbGreetings.Items.Add(_dbData[2][i]);
+                }
+                _cache = new MemoryCache("Primary")
+                {
+                    {"Greetings", _dbData, (DateTimeOffset.Now + TimeSpan.FromMinutes(5))}
+                };
             }
 
         }
@@ -51,59 +64,51 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             }
             int index = lbGreetings.SelectedIndex;
             int result = -1;
-            string query;
             string title = HttpUtility.HtmlEncode(tbTitle.Text);
             string part1 = HttpUtility.HtmlEncode(tbPart1.Text);
             string part2 = HttpUtility.HtmlEncode(tbPart2.Text);
             int current = cbCurrent.Checked ? 1 : 0;
             if (current == 1)
             {
-                query = Classes.MySql.GetQuery(QueryIndex.Greetings2);
-                result = Program.MySql.ExecuteNonQuery(query);
+                result = Program.MySql.ExecuteNonQuery(QueryIndex.Greetings2);
             }
             if (index == 0)
             {
-                query = Classes.MySql.GetQuery(QueryIndex.Greetings3, current, title, part1, part2);
-                result = Program.MySql.ExecuteNonQuery(query);
+                result = Program.MySql.ExecuteNonQuery(QueryIndex.Greetings3, current, title, part1, part2);
                 if (result != 1) return;
-                query = Classes.MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has created the Greeting \"" + title+ "\".");
-                result = Program.MySql.ExecuteNonQuery(query); 
+                result = Program.MySql.ExecuteNonQuery(QueryIndex.Logs3, 3, Program.uName + " has created the Greeting \"" + title + "\".");
                 if (result == 1)
                 {
-                    MessageBox.Show("Greeting \"" + title+"\" added.");
+                    MessageBox.Show("Greeting \"" + title + "\" added.");
                 }
             }
             else
             {
                 index -= 1;
-                int ID = Convert.ToInt32(_greetingData[0][index]);
-                query = Classes.MySql.GetQuery(QueryIndex.Greetings4, current, title, part1, part2, ID);
-                result = Program.MySql.ExecuteNonQuery(query);
+                int ID = Convert.ToInt32(_dbData[0][index]);
+                result = Program.MySql.ExecuteNonQuery(QueryIndex.Greetings4, current, title, part1, part2, ID);
                 if (result != 1) return;
-                query = Classes.MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has updated the Greeting \"" + title+ "\".");
-                result = Program.MySql.ExecuteNonQuery(query);
+                result = Program.MySql.ExecuteNonQuery(QueryIndex.Logs3, 3, Program.uName + " has updated the Greeting \"" + title + "\".");
                 if (result == 1)
                 {
                     MessageBox.Show("Greeting \"" + title + "\" updated.");
                 }
             }
-            Load();
+            LoadGreeting();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             string title = lblTitle.Text;
-            DialogResult dialogresult = MessageBox.Show("Are you sure you want to delete \"" + title + "\"","Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dialogresult = MessageBox.Show("Are you sure you want to delete \"" + title + "\"", "Confirmation", MessageBoxButtons.YesNo);
             if (dialogresult != DialogResult.Yes) return;
-            var ID = _greetingData[0][lbGreetings.SelectedIndex - 1];
-            string query = Classes.MySql.GetQuery(QueryIndex.Greetings5, ID);
-            var result = Program.MySql.ExecuteNonQuery(query);
-            query = Classes.MySql.GetQuery(QueryIndex.Logs3, 3, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has deleted the Greeting \"" + title + "\".");
+            var ID = _dbData[0][lbGreetings.SelectedIndex - 1];
+            var result = Program.MySql.ExecuteNonQuery(QueryIndex.Greetings5, ID);
             if (result == -1) return;
-            result = Program.MySql.ExecuteNonQuery(query);
+            result = Program.MySql.ExecuteNonQuery(QueryIndex.Logs3, 3, Program.uName + " has deleted the Greeting \"" + title + "\".");
             if (result != 1) return;
-            Load();
-            MessageBox.Show("Greeting \"" +title+"\".");
+            LoadGreeting();
+            MessageBox.Show("Greeting \"" + title + "\".");
         }
 
         private void lbGreetings_SelectedIndexChanged(object sender, EventArgs e)
@@ -119,10 +124,10 @@ namespace COBOAM_Admin.UserControls.WebAdmin
                     break;
                 default:
                     index -= 1;
-                    cbCurrent.Checked = _greetingData[1][index] == "1" ? true : false;
-                    tbTitle.Text = HttpUtility.HtmlDecode(_greetingData[2][index]);
-                    tbPart1.Text = HttpUtility.HtmlDecode(_greetingData[3][index]);
-                    tbPart2.Text = HttpUtility.HtmlDecode(_greetingData[4][index]);
+                    cbCurrent.Checked = _dbData[1][index] == "1" ? true : false;
+                    tbTitle.Text = HttpUtility.HtmlDecode(_dbData[2][index]);
+                    tbPart1.Text = HttpUtility.HtmlDecode(_dbData[3][index]);
+                    tbPart2.Text = HttpUtility.HtmlDecode(_dbData[4][index]);
                     break;
 
             }

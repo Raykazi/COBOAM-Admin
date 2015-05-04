@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Runtime.Caching;
 using COBOAM_Admin.Classes;
 using COBOAM_Admin.Properties;
 using System;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace COBOAM_Admin.UserControls.WebAdmin
 {
-    public partial class Members : UserControl
+    public partial class Members : TUserControl
     {
         private List<string>[] _dbData;
         private readonly BindingSource _source = new BindingSource();
@@ -20,6 +21,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
         private bool _enabled;
         private bool _creating;
         private Email _email;
+
 
         public Members()
         {
@@ -30,21 +32,20 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         private void DbLoad(object prevSelected = null)
         {
-            _dbData = Program.MySql.ExecuteReader(Queries.Value(QueryIndex.Members1));
+            _dbData = Program.MySql.ExecuteReader(QueryIndex.Members1);
             if (_source.Count > 0)
             {
                 _source.Clear();
                 _fSource.Clear();
                 lbMembers.DataSource = _source;
-
             }
-            _source.Add(new DBItem(Resources.LB_Create_New, -1));
             for (int i = 0; i < _dbData[0].Count; i++)
             {
                 string name = string.Format("{0} {1}", _dbData[6][i], _dbData[5][i]);
                 _source.Add(new DBItem(name, _dbData[0][i]));
                 _fSource.Add(new DBItem(name, _dbData[0][i]));
             }
+            _source.Insert(0, new DBItem(Resources.LB_Create_New, 0));
             lbMembers.DataSource = _source;
             lbMembers.DisplayMember = "Text";
             lbMembers.ValueMember = "Value";
@@ -144,7 +145,6 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             string email = tbEmail.Text;
             string[] name = tbName.Text.Split(' ');
             int level = Convert.ToInt32(((DBItem)cbAL.SelectedItem).Value.ToString());
-            string query;
             switch (value)
             {
                 case -1:
@@ -153,12 +153,10 @@ namespace COBOAM_Admin.UserControls.WebAdmin
                     {
                         password = wc.DownloadString("http://channelofblessings.com/includes/crypt.php?u=" + userName + "&p=12345");
                     }
-                    query = Classes.MySql.GetQuery(QueryIndex.Members2, userName, password, email, name[0], name[1], level);
-                    if (Program.MySql.ExecuteNonQuery(query) != 1) return;
-                    query = Classes.MySql.GetQuery(QueryIndex.Logs3, 5, DateTime.Now.ToString(), Program.uCIP, Program.uName + " created " + userName + "\'s account.");
+                    if (Program.MySql.ExecuteNonQuery(QueryIndex.Members2, userName, password, email, name[0], name[1], level) != 1) return;
                     _email = new Email(email, "Channel Of Blessings Registration", String.Format(Resources.New_Member_Email, tbName.Text, userName, "coboam"));
                     _email.Send();
-                    if (Program.MySql.ExecuteNonQuery(query) == 1)
+                    if (Program.MySql.ExecuteNonQuery(QueryIndex.Logs3, 5, Program.uName + " created " + userName + "\'s account.") == 1)
                     {
                         MessageBox.Show(_email.Status
                             ? String.Format(Resources.Member_Created + " Registration email sent.", userName)
@@ -167,11 +165,8 @@ namespace COBOAM_Admin.UserControls.WebAdmin
                     break;
 
                 default:
-                    query = Classes.MySql.GetQuery(QueryIndex.Members3, userName, email, name[0], name[1], level, value);
-                    if (Program.MySql.ExecuteNonQuery(query) != 1) return;
-                    query = Classes.MySql.GetQuery(QueryIndex.Logs3, 5, DateTime.Now.ToString(), Program.uCIP, Program.uName + " updated the information of " + userName + ".");
-
-                    if (Program.MySql.ExecuteNonQuery(query) == 1)
+                    if (Program.MySql.ExecuteNonQuery(QueryIndex.Members3, userName, email, name[0], name[1], level, value) != 1) return;
+                    if (Program.MySql.ExecuteNonQuery(QueryIndex.Logs3, 5, Program.uName + " updated the information of " + userName + ".") == 1)
                     {
                         MessageBox.Show(String.Format(Resources.Member_Updated, userName));
                     }
@@ -215,11 +210,9 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             int ID = Convert.ToInt32(((DBItem)lbMembers.SelectedItem).Value.ToString());
             int value = _enabled ? 1 : 0;
             string text = value == 1 ? "disabled" : "enabled";
-            string query = Classes.MySql.GetQuery(QueryIndex.Members4, ID, value);
-            if (Program.MySql.ExecuteNonQuery(query) != 1) return;
-            query = Classes.MySql.GetQuery(QueryIndex.Logs3, 5, DateTime.Now.ToString(), Program.uCIP, Program.uName + " has " + text + " " + userName + "\'s account.");
-            if (Program.MySql.ExecuteNonQuery(query) != 1) return;
-            MessageBox.Show(String.Format(Resources.Member_SC, tbUN.Text, text));
+            if (Program.MySql.ExecuteNonQuery(QueryIndex.Members4, ID, value) != 1) return;
+            if (Program.MySql.ExecuteNonQuery(QueryIndex.Logs3, 5, Program.uName + " has " + text + " " + userName + "\'s account.") != 1) return;
+            MessageBox.Show(String.Format(Resources.Member_SC, tbUN.Text, text) + Program.uCIP);
             DbLoad(lbMembers.SelectedValue);
         }
 
@@ -238,8 +231,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
                 tbEmail.BackColor = Color.IndianRed;
                 return;
             }
-            string query = Classes.MySql.GetQuery(QueryIndex.Members6, email);
-            int result = Convert.ToInt32(Program.MySql.ExecuteScalar(query));
+            int result = Convert.ToInt32(Program.MySql.ExecuteScalar(QueryIndex.Members6, email));
             if (result != 0)
             {
                 lblSEmail.Text = "Email already in use.";
@@ -263,7 +255,8 @@ namespace COBOAM_Admin.UserControls.WebAdmin
                 return;
             }
             if (!_creating)
-            { return;
+            {
+                return;
             }
             string[] name = tbName.Text.Split(' ');
             var fName = name[0].ToCharArray();
@@ -272,8 +265,7 @@ namespace COBOAM_Admin.UserControls.WebAdmin
             while (!unique)
             {
                 string username = number == 0 ? string.Concat(fName[0], name[1]).ToLower() : string.Concat(fName[0], name[1], number).ToLower();
-                string query = Classes.MySql.GetQuery(QueryIndex.Members5, username);
-                var result = Program.MySql.ExecuteScalar(query);
+                var result = Program.MySql.ExecuteScalar(QueryIndex.Members5, username);
                 if (Convert.ToInt32(result) != 0)
                 {
                     number += 1;

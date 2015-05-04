@@ -10,7 +10,7 @@ namespace COBOAM_Admin.Classes
     {
         private readonly MySqlConnection _connection;
         private MySqlCommand _mCmd;
-
+        private string[] argArray = new[] { "{0}", "{1}", "{2}", "{3}", "{4}", "{5}", "{6}", "{7}", "{8}", "{9}" };
 
         //private const string QueryPath = "Queries\\";
 
@@ -64,14 +64,17 @@ namespace COBOAM_Admin.Classes
             return query;
         }
 
-        internal List<string>[] ExecuteReader(string query)
+        internal List<string>[] ExecuteReader(QueryIndex qi, params object[] args)
         {
             if (!OpenConnection()) return null;
+            string query = Queries.Value(qi);
             _mCmd = new MySqlCommand(query, _connection);
+            for (int i = 0; i < args.Length; i++)
+                _mCmd.Parameters.AddWithValue("?p" + i, args[i]);
             MySqlDataReader mReader = _mCmd.ExecuteReader();
             _mCmd = null;
             List<string>[] list = new List<string>[mReader.FieldCount];
-            
+
             for (int i = 0; i < (list.Length); i++)
             {
                 list[i] = new List<string>();
@@ -86,19 +89,25 @@ namespace COBOAM_Admin.Classes
             return list;
         }
 
-        internal object ExecuteScalar(string query)
+        internal object ExecuteScalar(QueryIndex qi, params object[] args)
         {
             if (!OpenConnection()) return null;
+            string query = Queries.Value(qi);
             _mCmd = new MySqlCommand(query, _connection);
+            for (int i = 0; i < args.Length; i++)
+                _mCmd.Parameters.AddWithValue("?p" + i, args[i]);
             object mObject = _mCmd.ExecuteScalar();
             _mCmd = null;
             CloseConnection();
             return mObject;
         }
-        internal int ExecuteNonQuery(string query)
+        internal int ExecuteNonQuery(QueryIndex qi, params object[] args)
         {
             if (!OpenConnection()) return -1;
+            string query = Queries.Value(qi);
             _mCmd = new MySqlCommand(query, _connection);
+            for (int i = 0; i < args.Length; i++)
+                _mCmd.Parameters.AddWithValue("?p" + i, args[i]);
             int result = _mCmd.ExecuteNonQuery();
             _mCmd = null;
             CloseConnection();

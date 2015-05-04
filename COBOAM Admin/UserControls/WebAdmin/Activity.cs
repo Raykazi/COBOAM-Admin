@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using COBOAM_Admin.Classes;
 using COBOAM_Admin.Properties;
+using System.Runtime.Caching;
 
 namespace COBOAM_Admin.UserControls.WebAdmin
 {
     public partial class Activity : UserControl
     {
         private List<string>[] _dbData;
+        private MemoryCache _aCache;
 
         public Activity()
         {
@@ -17,36 +19,34 @@ namespace COBOAM_Admin.UserControls.WebAdmin
 
         private void cbTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string query;
-            Logs type = (Logs)((DBItem)cbTypes.SelectedItem).Value;
-            switch (type)
+            if (_aCache != null && (_aCache.Get("Activity|" + _aCache.Get("Activity")) != null))
             {
-                default:
-                    query = Classes.MySql.GetQuery(QueryIndex.Logs1);
-                    break;
-                case Logs.Announcements:
-                    query = Classes.MySql.GetQuery(QueryIndex.Logs2, (int)Logs.Announcements);
-                    break;
-                case Logs.Devotion:
-                    query = Classes.MySql.GetQuery(QueryIndex.Logs2, (int)Logs.Devotion);
-                    break;
-                case Logs.Greetings:
-                    query = Classes.MySql.GetQuery(QueryIndex.Logs2, (int)Logs.Greetings);
-                    break;
-                case Logs.Security:
-                    query = Classes.MySql.GetQuery(QueryIndex.Logs2, (int)Logs.Security);
-                    break;
-                case Logs.Sermons:
-                    query = Classes.MySql.GetQuery(QueryIndex.Logs2, (int)Logs.Sermons);
-                    break;
-                case Logs.Testimony:
-                    query = Classes.MySql.GetQuery(QueryIndex.Logs2, (int)Logs.Testimony);
-                    break;
-                case Logs.Users:
-                    query = Classes.MySql.GetQuery(QueryIndex.Logs2, (int)Logs.Users);
-                    break;
+                _dbData = _aCache.Get("Activity") as List<string>[];
             }
-            _dbData = Program.MySql.ExecuteReader(query);
+            else
+            {
+                Logs type = (Logs)((DBItem)cbTypes.SelectedItem).Value;
+                switch (type)
+                {
+                    default:
+                        _dbData = Program.MySql.ExecuteReader(QueryIndex.Logs1);
+                        break;
+                    case Logs.Announcements:
+                    case Logs.Devotion:
+                    case Logs.Greetings:
+                    case Logs.Security:
+                    case Logs.Sermons:
+                    case Logs.Testimony:
+                    case Logs.Users:
+                        _dbData = Program.MySql.ExecuteReader(QueryIndex.Logs2, (int)type);
+                        break;
+                }
+                _aCache = new MemoryCache("Primary")
+                {
+                    
+                    {"Activity|"+cbTypes.SelectedItem, _dbData, (DateTimeOffset.Now + TimeSpan.FromMinutes(5))}
+                };
+            }
             int rowCount = _dbData[0].Count;
             rtbLogs.Text = string.Empty;
             for (int i = 0; i < rowCount; i++)
