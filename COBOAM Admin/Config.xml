@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<COBOAM>
+  <Database>
+    <Host>50.192.51.66</Host>
+    <Port>3306</Port>
+    <DB>coboam</DB>
+    <Username>cobuser</Username>
+    <Password>93e684465aca87f88adf27995d0f8008</Password>
+  </Database>
+  <FTP>
+    <Host>channelofblessings.com</Host>
+    <Port>21</Port>
+    <Username>u39184548-cadmin</Username>
+    <Password>110e8J72ph</Password>
+  </FTP>
+  <Email>
+    <Host>smtp.1and1.com</Host>
+    <Port>587</Port>
+    <Username>webmaster@channelofblessings.com</Username>
+    <Password>asshole23</Password>
+  </Email>
+  <AutoLogin>
+    <Enabled>1</Enabled>
+    <Username>Raykazi</Username>
+    <Password>asshole23</Password>
+  </AutoLogin>
+</COBOAM>
