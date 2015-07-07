@@ -41,7 +41,7 @@ namespace COBOAM_Admin.Forms
             this.panelMain = new System.Windows.Forms.Panel();
             this.MSC = new COBOAM_Admin.UserControls.MediaSalesControl();
             this.WAC = new COBOAM_Admin.UserControls.WebAdminControl();
-            this.SC = new COBOAM_Admin.UserControls.Settings();
+            this.SC = new COBOAM_Admin.UserControls.SettingsControl();
             this.statusStrip.SuspendLayout();
             this.gbButtons.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -198,6 +198,6 @@ namespace COBOAM_Admin.Forms
         private Panel panelMain;
         private MediaSalesControl MSC;
         private WebAdminControl WAC;
-        private Settings SC;
+        private SettingsControl SC;
     }
 }

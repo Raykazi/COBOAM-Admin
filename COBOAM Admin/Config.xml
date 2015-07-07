@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <COBOAM>
   <Database>
-    <Host>50.192.51.66</Host>
+    <Host>hq.channelofblessings.net</Host>
     <Port>3306</Port>
     <DB>coboam</DB>
     <Username>cobuser</Username>
@@ -20,7 +20,7 @@
     <Password>asshole23</Password>
   </Email>
   <AutoLogin>
-    <Enabled>1</Enabled>
+    <Enabled>0</Enabled>
     <Username>Raykazi</Username>
     <Password>asshole23</Password>
   </AutoLogin>

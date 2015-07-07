@@ -32,35 +32,36 @@
             this.tcMS = new System.Windows.Forms.TabControl();
             this.tpOrders = new System.Windows.Forms.TabPage();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
-            this.bsOrder = new System.Windows.Forms.BindingSource(this.components);
             this.panelBNav = new System.Windows.Forms.Panel();
             this.bnOrder = new System.Windows.Forms.BindingNavigator(this.components);
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorEditItem = new System.Windows.Forms.ToolStripButton();
-            this.btnDeleteOrder = new System.Windows.Forms.ToolStripButton();
+            this.btnNO = new System.Windows.Forms.ToolStripButton();
+            this.btnEO = new System.Windows.Forms.ToolStripButton();
+            this.btnDO = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tpCustomers = new System.Windows.Forms.TabPage();
             this.tpSermons = new System.Windows.Forms.TabPage();
             this.tpPreachers = new System.Windows.Forms.TabPage();
+            this.bsOrder = new System.Windows.Forms.BindingSource(this.components);
             this.dS_Main = new COBOAM_Admin.DS_Main();
-            this.oIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateOrderedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.orderTableAdapter = new COBOAM_Admin.DS_MainTableAdapters.orderTableAdapter();
+            this.orderIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discountsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amtOwedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amtPaidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paidDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.orderTableAdapter = new COBOAM_Admin.DS_MainTableAdapters.orderTableAdapter();
             this.tcMS.SuspendLayout();
             this.tpOrders.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsOrder)).BeginInit();
             this.panelBNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bnOrder)).BeginInit();
             this.bnOrder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_Main)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,14 +93,17 @@
             // 
             // dgvCustomer
             // 
+            this.dgvCustomer.AllowUserToAddRows = false;
+            this.dgvCustomer.AllowUserToDeleteRows = false;
             this.dgvCustomer.AutoGenerateColumns = false;
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.oIDDataGridViewTextBoxColumn,
-            this.cIDDataGridViewTextBoxColumn,
-            this.sIDDataGridViewTextBoxColumn,
-            this.dateOrderedDataGridViewTextBoxColumn,
-            this.typeDataGridViewCheckBoxColumn,
+            this.orderIDDataGridViewTextBoxColumn,
+            this.orderDateDataGridViewTextBoxColumn,
+            this.lastNameDataGridViewTextBoxColumn,
+            this.firstNameDataGridViewTextBoxColumn,
+            this.typeDataGridViewTextBoxColumn,
+            this.titleDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn,
             this.discountsDataGridViewTextBoxColumn,
             this.amtOwedDataGridViewTextBoxColumn,
@@ -109,13 +113,9 @@
             this.dgvCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCustomer.Location = new System.Drawing.Point(3, 28);
             this.dgvCustomer.Name = "dgvCustomer";
+            this.dgvCustomer.ReadOnly = true;
             this.dgvCustomer.Size = new System.Drawing.Size(1326, 581);
             this.dgvCustomer.TabIndex = 1;
-            // 
-            // bsOrder
-            // 
-            this.bsOrder.DataMember = "order";
-            this.bsOrder.DataSource = this.dS_Main;
             // 
             // panelBNav
             // 
@@ -132,9 +132,9 @@
             this.bnOrder.CountItem = null;
             this.bnOrder.DeleteItem = null;
             this.bnOrder.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.bindingNavigatorEditItem,
-            this.btnDeleteOrder,
+            this.btnNO,
+            this.btnEO,
+            this.btnDO,
             this.toolStripSeparator1});
             this.bnOrder.Location = new System.Drawing.Point(0, 0);
             this.bnOrder.MoveFirstItem = null;
@@ -146,27 +146,27 @@
             this.bnOrder.Size = new System.Drawing.Size(1326, 25);
             this.bnOrder.TabIndex = 3;
             // 
-            // toolStripButton1
+            // btnNO
             // 
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.RightToLeftAutoMirrorImage = true;
-            this.toolStripButton1.Size = new System.Drawing.Size(68, 22);
-            this.toolStripButton1.Text = "New Order";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.btnNO.Name = "btnNO";
+            this.btnNO.RightToLeftAutoMirrorImage = true;
+            this.btnNO.Size = new System.Drawing.Size(68, 22);
+            this.btnNO.Text = "New Order";
+            this.btnNO.Click += new System.EventHandler(this.btnNO_Click);
             // 
-            // bindingNavigatorEditItem
+            // btnEO
             // 
-            this.bindingNavigatorEditItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bindingNavigatorEditItem.Name = "bindingNavigatorEditItem";
-            this.bindingNavigatorEditItem.Size = new System.Drawing.Size(111, 22);
-            this.bindingNavigatorEditItem.Text = "Edit Selected Order";
+            this.btnEO.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEO.Name = "btnEO";
+            this.btnEO.Size = new System.Drawing.Size(111, 22);
+            this.btnEO.Text = "Edit Selected Order";
             // 
-            // btnDeleteOrder
+            // btnDO
             // 
-            this.btnDeleteOrder.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDeleteOrder.Name = "btnDeleteOrder";
-            this.btnDeleteOrder.Size = new System.Drawing.Size(77, 22);
-            this.btnDeleteOrder.Text = "Delete Order";
+            this.btnDO.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDO.Name = "btnDO";
+            this.btnDO.Size = new System.Drawing.Size(77, 22);
+            this.btnDO.Text = "Delete Order";
             // 
             // toolStripSeparator1
             // 
@@ -201,74 +201,96 @@
             this.tpPreachers.Text = "Preachers";
             this.tpPreachers.UseVisualStyleBackColor = true;
             // 
+            // bsOrder
+            // 
+            this.bsOrder.DataMember = "order";
+            this.bsOrder.DataSource = this.dS_Main;
+            // 
             // dS_Main
             // 
             this.dS_Main.DataSetName = "DS_Main";
             this.dS_Main.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // oIDDataGridViewTextBoxColumn
+            // orderTableAdapter
             // 
-            this.oIDDataGridViewTextBoxColumn.DataPropertyName = "OID";
-            this.oIDDataGridViewTextBoxColumn.HeaderText = "OID";
-            this.oIDDataGridViewTextBoxColumn.Name = "oIDDataGridViewTextBoxColumn";
+            this.orderTableAdapter.ClearBeforeFill = true;
             // 
-            // cIDDataGridViewTextBoxColumn
+            // orderIDDataGridViewTextBoxColumn
             // 
-            this.cIDDataGridViewTextBoxColumn.DataPropertyName = "CID";
-            this.cIDDataGridViewTextBoxColumn.HeaderText = "CID";
-            this.cIDDataGridViewTextBoxColumn.Name = "cIDDataGridViewTextBoxColumn";
+            this.orderIDDataGridViewTextBoxColumn.DataPropertyName = "Order ID";
+            this.orderIDDataGridViewTextBoxColumn.HeaderText = "Order ID";
+            this.orderIDDataGridViewTextBoxColumn.Name = "orderIDDataGridViewTextBoxColumn";
+            this.orderIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // sIDDataGridViewTextBoxColumn
+            // orderDateDataGridViewTextBoxColumn
             // 
-            this.sIDDataGridViewTextBoxColumn.DataPropertyName = "SID";
-            this.sIDDataGridViewTextBoxColumn.HeaderText = "SID";
-            this.sIDDataGridViewTextBoxColumn.Name = "sIDDataGridViewTextBoxColumn";
+            this.orderDateDataGridViewTextBoxColumn.DataPropertyName = "Order Date";
+            this.orderDateDataGridViewTextBoxColumn.HeaderText = "Order Date";
+            this.orderDateDataGridViewTextBoxColumn.Name = "orderDateDataGridViewTextBoxColumn";
+            this.orderDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dateOrderedDataGridViewTextBoxColumn
+            // lastNameDataGridViewTextBoxColumn
             // 
-            this.dateOrderedDataGridViewTextBoxColumn.DataPropertyName = "dateOrdered";
-            this.dateOrderedDataGridViewTextBoxColumn.HeaderText = "dateOrdered";
-            this.dateOrderedDataGridViewTextBoxColumn.Name = "dateOrderedDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "Last Name";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // typeDataGridViewCheckBoxColumn
+            // firstNameDataGridViewTextBoxColumn
             // 
-            this.typeDataGridViewCheckBoxColumn.DataPropertyName = "Type";
-            this.typeDataGridViewCheckBoxColumn.HeaderText = "Type";
-            this.typeDataGridViewCheckBoxColumn.Name = "typeDataGridViewCheckBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "First Name";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // discountsDataGridViewTextBoxColumn
             // 
             this.discountsDataGridViewTextBoxColumn.DataPropertyName = "Discounts";
             this.discountsDataGridViewTextBoxColumn.HeaderText = "Discounts";
             this.discountsDataGridViewTextBoxColumn.Name = "discountsDataGridViewTextBoxColumn";
+            this.discountsDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // amtOwedDataGridViewTextBoxColumn
             // 
             this.amtOwedDataGridViewTextBoxColumn.DataPropertyName = "AmtOwed";
             this.amtOwedDataGridViewTextBoxColumn.HeaderText = "AmtOwed";
             this.amtOwedDataGridViewTextBoxColumn.Name = "amtOwedDataGridViewTextBoxColumn";
+            this.amtOwedDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // amtPaidDataGridViewTextBoxColumn
             // 
             this.amtPaidDataGridViewTextBoxColumn.DataPropertyName = "AmtPaid";
             this.amtPaidDataGridViewTextBoxColumn.HeaderText = "AmtPaid";
             this.amtPaidDataGridViewTextBoxColumn.Name = "amtPaidDataGridViewTextBoxColumn";
+            this.amtPaidDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // paidDataGridViewCheckBoxColumn
             // 
             this.paidDataGridViewCheckBoxColumn.DataPropertyName = "Paid";
             this.paidDataGridViewCheckBoxColumn.HeaderText = "Paid";
             this.paidDataGridViewCheckBoxColumn.Name = "paidDataGridViewCheckBoxColumn";
-            // 
-            // orderTableAdapter
-            // 
-            this.orderTableAdapter.ClearBeforeFill = true;
+            this.paidDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // MediaSalesControl
             // 
@@ -280,12 +302,12 @@
             this.tcMS.ResumeLayout(false);
             this.tpOrders.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsOrder)).EndInit();
             this.panelBNav.ResumeLayout(false);
             this.panelBNav.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bnOrder)).EndInit();
             this.bnOrder.ResumeLayout(false);
             this.bnOrder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_Main)).EndInit();
             this.ResumeLayout(false);
 
@@ -302,22 +324,27 @@
         private System.Windows.Forms.TabPage tpPreachers;
         private System.Windows.Forms.BindingSource bsOrder;
         private System.Windows.Forms.BindingNavigator bnOrder;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorEditItem;
-        private System.Windows.Forms.ToolStripButton btnDeleteOrder;
+        private System.Windows.Forms.ToolStripButton btnNO;
+        private System.Windows.Forms.ToolStripButton btnEO;
+        private System.Windows.Forms.ToolStripButton btnDO;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.DataGridViewTextBoxColumn oIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateOrderedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn typeDataGridViewCheckBoxColumn;
+        private DS_Main dS_Main;
+        private DS_MainTableAdapters.orderTableAdapter orderTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn discountsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn amtOwedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn amtPaidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn paidDataGridViewCheckBoxColumn;
-        private DS_Main dS_Main;
-        private DS_MainTableAdapters.orderTableAdapter orderTableAdapter;
 
     }
 }

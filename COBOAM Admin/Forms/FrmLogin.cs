@@ -100,10 +100,7 @@ namespace COBOAM_Admin.Forms
 
         private void cbRM_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbRM.Checked)
-            {
-
-            }
+            Program.aLE = Convert.ToInt32(cbRM.Checked);
         }
     }
 }

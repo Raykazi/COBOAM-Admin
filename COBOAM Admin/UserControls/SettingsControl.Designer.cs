@@ -1,6 +1,6 @@
 ﻿namespace COBOAM_Admin.UserControls
 {
-    partial class Settings
+    partial class SettingsControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -34,11 +34,11 @@
             this.lblHost = new System.Windows.Forms.Label();
             this.lblPW = new System.Windows.Forms.Label();
             this.lblUN = new System.Windows.Forms.Label();
-            this.tbDB = new System.Windows.Forms.TextBox();
-            this.tbPort = new System.Windows.Forms.TextBox();
-            this.tbHost = new System.Windows.Forms.TextBox();
-            this.tbPW = new System.Windows.Forms.TextBox();
-            this.tbUN = new System.Windows.Forms.TextBox();
+            this.tbDDB = new System.Windows.Forms.TextBox();
+            this.tbDPort = new System.Windows.Forms.TextBox();
+            this.tbDHost = new System.Windows.Forms.TextBox();
+            this.tbDPW = new System.Windows.Forms.TextBox();
+            this.tbDUN = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -60,22 +60,13 @@
             this.tbFHost = new System.Windows.Forms.TextBox();
             this.tbFPW = new System.Windows.Forms.TextBox();
             this.tbFUN = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.gbALogin = new System.Windows.Forms.GroupBox();
+            this.cbALE = new System.Windows.Forms.CheckBox();
             this.gbDB.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.gbSMTP.SuspendLayout();
             this.gbFTP.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.gbALogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbDB
@@ -85,11 +76,11 @@
             this.gbDB.Controls.Add(this.lblHost);
             this.gbDB.Controls.Add(this.lblPW);
             this.gbDB.Controls.Add(this.lblUN);
-            this.gbDB.Controls.Add(this.tbDB);
-            this.gbDB.Controls.Add(this.tbPort);
-            this.gbDB.Controls.Add(this.tbHost);
-            this.gbDB.Controls.Add(this.tbPW);
-            this.gbDB.Controls.Add(this.tbUN);
+            this.gbDB.Controls.Add(this.tbDDB);
+            this.gbDB.Controls.Add(this.tbDPort);
+            this.gbDB.Controls.Add(this.tbDHost);
+            this.gbDB.Controls.Add(this.tbDPW);
+            this.gbDB.Controls.Add(this.tbDUN);
             this.gbDB.Location = new System.Drawing.Point(3, 3);
             this.gbDB.Name = "gbDB";
             this.gbDB.Size = new System.Drawing.Size(191, 167);
@@ -142,40 +133,40 @@
             this.lblUN.TabIndex = 1;
             this.lblUN.Text = "Username:";
             // 
-            // tbDB
+            // tbDDB
             // 
-            this.tbDB.Location = new System.Drawing.Point(69, 131);
-            this.tbDB.Name = "tbDB";
-            this.tbDB.Size = new System.Drawing.Size(100, 20);
-            this.tbDB.TabIndex = 4;
+            this.tbDDB.Location = new System.Drawing.Point(69, 131);
+            this.tbDDB.Name = "tbDDB";
+            this.tbDDB.Size = new System.Drawing.Size(100, 20);
+            this.tbDDB.TabIndex = 4;
             // 
-            // tbPort
+            // tbDPort
             // 
-            this.tbPort.Location = new System.Drawing.Point(69, 105);
-            this.tbPort.Name = "tbPort";
-            this.tbPort.Size = new System.Drawing.Size(100, 20);
-            this.tbPort.TabIndex = 3;
+            this.tbDPort.Location = new System.Drawing.Point(69, 105);
+            this.tbDPort.Name = "tbDPort";
+            this.tbDPort.Size = new System.Drawing.Size(100, 20);
+            this.tbDPort.TabIndex = 3;
             // 
-            // tbHost
+            // tbDHost
             // 
-            this.tbHost.Location = new System.Drawing.Point(69, 79);
-            this.tbHost.Name = "tbHost";
-            this.tbHost.Size = new System.Drawing.Size(100, 20);
-            this.tbHost.TabIndex = 2;
+            this.tbDHost.Location = new System.Drawing.Point(69, 79);
+            this.tbDHost.Name = "tbDHost";
+            this.tbDHost.Size = new System.Drawing.Size(100, 20);
+            this.tbDHost.TabIndex = 2;
             // 
-            // tbPW
+            // tbDPW
             // 
-            this.tbPW.Location = new System.Drawing.Point(69, 53);
-            this.tbPW.Name = "tbPW";
-            this.tbPW.Size = new System.Drawing.Size(100, 20);
-            this.tbPW.TabIndex = 1;
+            this.tbDPW.Location = new System.Drawing.Point(69, 53);
+            this.tbDPW.Name = "tbDPW";
+            this.tbDPW.Size = new System.Drawing.Size(100, 20);
+            this.tbDPW.TabIndex = 1;
             // 
-            // tbUN
+            // tbDUN
             // 
-            this.tbUN.Location = new System.Drawing.Point(69, 27);
-            this.tbUN.Name = "tbUN";
-            this.tbUN.Size = new System.Drawing.Size(100, 20);
-            this.tbUN.TabIndex = 0;
+            this.tbDUN.Location = new System.Drawing.Point(69, 27);
+            this.tbDUN.Name = "tbDUN";
+            this.tbDUN.Size = new System.Drawing.Size(100, 20);
+            this.tbDUN.TabIndex = 0;
             // 
             // btnCancel
             // 
@@ -202,7 +193,7 @@
             this.flowLayoutPanel1.Controls.Add(this.gbDB);
             this.flowLayoutPanel1.Controls.Add(this.gbSMTP);
             this.flowLayoutPanel1.Controls.Add(this.gbFTP);
-            this.flowLayoutPanel1.Controls.Add(this.groupBox3);
+            this.flowLayoutPanel1.Controls.Add(this.gbALogin);
             this.flowLayoutPanel1.Controls.Add(this.btnSave);
             this.flowLayoutPanel1.Controls.Add(this.btnCancel);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -373,104 +364,25 @@
             this.tbFUN.Size = new System.Drawing.Size(100, 20);
             this.tbFUN.TabIndex = 0;
             // 
-            // groupBox3
+            // gbALogin
             // 
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.textBox11);
-            this.groupBox3.Controls.Add(this.textBox12);
-            this.groupBox3.Controls.Add(this.textBox13);
-            this.groupBox3.Controls.Add(this.textBox14);
-            this.groupBox3.Controls.Add(this.textBox15);
-            this.groupBox3.Location = new System.Drawing.Point(200, 176);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(191, 167);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Database";
+            this.gbALogin.Controls.Add(this.cbALE);
+            this.gbALogin.Location = new System.Drawing.Point(200, 176);
+            this.gbALogin.Name = "gbALogin";
+            this.gbALogin.Size = new System.Drawing.Size(191, 66);
+            this.gbALogin.TabIndex = 9;
+            this.gbALogin.TabStop = false;
+            this.gbALogin.Text = "Auto Login";
             // 
-            // label11
+            // cbALE
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(8, 131);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(56, 13);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Database:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(35, 105);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(29, 13);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Port:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(32, 79);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(32, 13);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Host:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(8, 53);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(56, 13);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "Password:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 27);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(58, 13);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "Username:";
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(69, 131);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 20);
-            this.textBox11.TabIndex = 4;
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(69, 105);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 20);
-            this.textBox12.TabIndex = 3;
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(69, 79);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(100, 20);
-            this.textBox13.TabIndex = 2;
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(69, 53);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(100, 20);
-            this.textBox14.TabIndex = 1;
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(69, 27);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(100, 20);
-            this.textBox15.TabIndex = 0;
+            this.cbALE.AutoSize = true;
+            this.cbALE.Location = new System.Drawing.Point(11, 30);
+            this.cbALE.Name = "cbALE";
+            this.cbALE.Size = new System.Drawing.Size(106, 17);
+            this.cbALE.TabIndex = 0;
+            this.cbALE.Text = "Save Credentials";
+            this.cbALE.UseVisualStyleBackColor = true;
             // 
             // Settings
             // 
@@ -487,8 +399,8 @@
             this.gbSMTP.PerformLayout();
             this.gbFTP.ResumeLayout(false);
             this.gbFTP.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.gbALogin.ResumeLayout(false);
+            this.gbALogin.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -496,11 +408,11 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gbDB;
-        private System.Windows.Forms.TextBox tbDB;
-        private System.Windows.Forms.TextBox tbPort;
-        private System.Windows.Forms.TextBox tbHost;
-        private System.Windows.Forms.TextBox tbPW;
-        private System.Windows.Forms.TextBox tbUN;
+        private System.Windows.Forms.TextBox tbDDB;
+        private System.Windows.Forms.TextBox tbDPort;
+        private System.Windows.Forms.TextBox tbDHost;
+        private System.Windows.Forms.TextBox tbDPW;
+        private System.Windows.Forms.TextBox tbDUN;
         private System.Windows.Forms.Label lblDB;
         private System.Windows.Forms.Label lblPort;
         private System.Windows.Forms.Label lblHost;
@@ -527,17 +439,8 @@
         private System.Windows.Forms.TextBox tbFHost;
         private System.Windows.Forms.TextBox tbFPW;
         private System.Windows.Forms.TextBox tbFUN;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.GroupBox gbALogin;
+        private System.Windows.Forms.CheckBox cbALE;
 
     }
 }

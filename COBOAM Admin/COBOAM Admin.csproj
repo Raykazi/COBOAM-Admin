@@ -60,11 +60,6 @@
     <Compile Include="Classes\Encryption.cs" />
     <Compile Include="Classes\Mail.cs" />
     <Compile Include="Classes\Logs.cs" />
-    <Compile Include="DS_Main.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DS_Main.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Resources1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -76,11 +71,23 @@
     <Compile Include="UserControls\MediaSalesControl.Designer.cs">
       <DependentUpon>MediaSalesControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Settings.cs">
+    <Compile Include="UserControls\MediaSales\AddOrder.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\Settings.Designer.cs">
-      <DependentUpon>Settings.cs</DependentUpon>
+    <Compile Include="UserControls\MediaSales\AddOrder.Designer.cs">
+      <DependentUpon>AddOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MediaSales\FrmGeneric.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\MediaSales\FrmGeneric.Designer.cs">
+      <DependentUpon>FrmGeneric.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SettingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SettingsControl.Designer.cs">
+      <DependentUpon>SettingsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\TUC.cs">
       <SubType>UserControl</SubType>
@@ -143,8 +150,14 @@
     <EmbeddedResource Include="UserControls\MediaSalesControl.resx">
       <DependentUpon>MediaSalesControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Settings.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\MediaSales\AddOrder.resx">
+      <DependentUpon>AddOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MediaSales\FrmGeneric.resx">
+      <DependentUpon>FrmGeneric.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SettingsControl.resx">
+      <DependentUpon>SettingsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WebAdminControl.resx">
       <DependentUpon>WebAdminControl.cs</DependentUpon>
@@ -176,7 +189,6 @@
     <None Include="DS_Main.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS_Main.Designer.cs</LastGenOutput>
     </None>
     <None Include="DS_Main.xss">
       <DependentUpon>DS_Main.xsd</DependentUpon>
@@ -235,6 +247,7 @@
   <ItemGroup>
     <Content Include="Config.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -22,6 +22,7 @@ namespace COBOAM_Admin.Forms
             {
                 uc.Visible = uc.Name == "WAC";
             }
+            Text = "Website Control Panel";
         }
 
         private void btnMSC_Click(object sender, EventArgs e)
@@ -30,6 +31,7 @@ namespace COBOAM_Admin.Forms
             {
                 uc.Visible = uc.Name == "MSC";
             }
+            Text = "Media Sales";
 
         }
 
@@ -39,6 +41,7 @@ namespace COBOAM_Admin.Forms
             {
                 uc.Visible = uc.Name == "SC";
             }
+            Text = "Settings";
 
         }
 

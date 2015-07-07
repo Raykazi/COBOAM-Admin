@@ -38,22 +38,12 @@ namespace COBOAM_Admin.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=54.186.141.2;user id=raykazi;persistsecurityinfo=True;database=coboam;allo" +
-            "wzerodatetime=True;allowuservariables=True;convertzerodatetime=True")]
-        public string coboamConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("server=hq.channelofblessings.com;user id=cobuser;persistsecurityinfo=True;databas" +
+            "e=coboam;allowbatch=True;allowzerodatetime=True;allowuservariables=True;useusage" +
+            "advisor=True;password=93e684465aca87f88adf27995d0f8008")]
+        public string coboamCS {
             get {
-                return ((string)(this["coboamConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=50.192.51.66;user id=cobuser;persistsecurityinfo=True;database=coboam;allo" +
-            "wbatch=True;allowzerodatetime=True;allowuservariables=True;useusageadvisor=True")]
-        public string coboamConnectionString1 {
-            get {
-                return ((string)(this["coboamConnectionString1"]));
+                return ((string)(this["coboamCS"]));
             }
         }
     }
